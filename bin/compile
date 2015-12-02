@@ -39,6 +39,9 @@ mkdir -p $rubydir
 install_compass $rubydir
 export PATH="$rubydir/bin":$PATH
 export GEM_PATH=$rubydir
+echo "PATH=$PATH"
+echo "GEM_PATH=$rubydir"
+echo $(ls $rubydir/bin)
 
 buildpack=$(cd "$(dirname $0)/.." && pwd)
 arch=$(uname -m|tr A-Z a-z)
