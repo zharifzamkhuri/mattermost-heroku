@@ -71,14 +71,15 @@ install_go() {
 }
 
 install_compass() {
-  rubydir=$1
+  ruby_cache_dir=$1
+  ruby_gem_dir=$2
 
-  if test -e $rubydir/bin/compass
+  if test -e $ruby_cache_dir/bin/compass
   then
+      cp -R $ruby_cache_dir/* $ruby_gem_dir
       step "using compass 1.0.3"
   else
-      rm -rf $rubydir/*
       # Install compass gem
-      gem install --install-dir $rubydir -v 1.0.3 compass
+      gem install --install-dir $ruby_gem_dir -v 1.0.3 compass
   fi
 }
