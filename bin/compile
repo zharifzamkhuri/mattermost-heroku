@@ -1,11 +1,80 @@
 #!/bin/bash
 
+# exit on error
 set -e
 
 BUILD_DIR=$1
 CACHE_DIR=$2
 ENV_DIR=$3
+BP_DIR=$(cd $(dirname $0); cd ..; pwd)
+mkdir -p "$1" "$2"
+build=$(cd "$1/" && pwd)
+cache=$(cd "$2/" && pwd)
 
-echo "-----> Retrieving mattermost v1.2.1 tar"
-curl -s -L https://github.com/mattermost/platform/releases/download/v1.2.1/mattermost.tar.gz | tar -zxf - --strip-components=1 -C ${BUILD_DIR}
+source $BP_DIR/lib/deps.sh
+
+steptxt="----->"
+
+step() {
+    echo "$steptxt $@"
+}
+
+start() {
+    echo -n "$steptxt $@... "
+}
+
+finished() {
+    echo "done"
+}
+
+# Install Node 5.1.0 and NPM
+mkdir -p "$BUILD_DIR/.heroku/node/"
+install_nodejs "$BUILD_DIR/.heroku/node"
+export PATH="$BUILD_DIR/.heroku/node/bin":$PATH
+
+
+# Install compass gem
+rubydir=$cache/ruby
+mkdir -p $rubydir
+install_compass $rubydir
+export PATH="$rubydir/bin":$PATH
+export GEM_PATH=$rubydir
+
+buildpack=$(cd "$(dirname $0)/.." && pwd)
+arch=$(uname -m|tr A-Z a-z)
+if test $arch = x86_64
+then arch=amd64
+fi
+plat=$(uname|tr A-Z a-z)-$arch
+
+PATH=$buildpack/$plat/bin:$PATH
+name=$(<$build/Godeps/Godeps.json jq -r .ImportPath)
+ver=$(<$build/Godeps/Godeps.json jq -r .GoVersion)
+
+install_go $ver $cache
+
+echo "-----> Building Mattermost"
+mkdir -p $build/bin
+GOBIN=$build/bin export GOBIN
+GOROOT=$cache/$ver/go export GOROOT
+GOPATH=$build/.heroku/go export GOPATH
+PATH=$GOROOT/bin:$PATH
+
+mkdir -p $GOPATH/bin
+cp $(which godep) $GOPATH/bin/
+
+p=$GOPATH/src/$name
+mkdir -p $p
+cp -R $build/* $p
+
+cd $p
+make build-server
+make build-client
+
+cp $p/web/static/js/bundle*.js $build/web/static/js/
+cp $p/web/static/js/bundle*.js.map $build/web/static/js/
+cp $p/web/static/js/libs*.js $build/web/static/js/
+cp $p/web/static/css/*styles.css $build/web/static/css/
+sed -i'.bak' 's|bundle.js|bundle.min.js|g' $build/web/templates/head.html
+
 mkdir data/
