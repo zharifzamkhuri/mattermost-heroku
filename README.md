@@ -1,7 +1,5 @@
 # Mattermost + inline buildpack == Mattermost on Heroku
 
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
-
 ## Warnings
 
 1. Don't make configuration changes in the Mattermost admin console.
@@ -11,5 +9,4 @@
 
 ## ToDo
 
-1. Configurable versions (currently hard-coded to v1.2.1)
-2. More configurable options
+1. More configurable options
