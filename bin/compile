@@ -1,87 +1,80 @@
 #!/bin/bash
 
-# exit on error
 set -e
+
+BUILDPACK=$(cd $(dirname $0); cd ..; pwd)
+
+STEPTXT="----->"
+
+step() {
+    echo "$STEPTXT $@"
+}
+
+source $BUILDPACK/lib/deps.sh
 
 BUILD_DIR=$1
 CACHE_DIR=$2
 ENV_DIR=$3
-BP_DIR=$(cd $(dirname $0); cd ..; pwd)
-mkdir -p "$1" "$2"
-build=$(cd "$1/" && pwd)
-cache=$(cd "$2/" && pwd)
+RUBY_CACHE_DIR=$CACHE_DIR/ruby
+RUBY_GEM_DIR=$BUILD_DIR/.heroku/ruby
+GEM_PATH=$RUBY_GEM_DIR
+PLATFORM=$(get_platform)
+OS=$(get_os)
+CPU=$(get_cpu)
+NODE_BUILD_DIR=$BUILD_DIR/.heroku/node/
+NODE_VERSION="v5.5.0"
+NODE_DOWNLOAD_URL="http://s3pository.heroku.com/node/$NODE_VERSION/node-$NODE_VERSION-$OS-$CPU.tar.gz"
+MATTERMOST_REPO="$(cat $ENV_DIR/MATTERMOST_REPO)"
+MATTERMOST_BRANCH="$(cat $ENV_DIR/MATTERMOST_BRANCH)"
+PATH="$RUBY_GEM_DIR/bin:$BUILDPACK/$PLATFORM/bin:$BUILD_DIR/.heroku/node/bin":$PATH
 
-source $BP_DIR/lib/deps.sh
+mkdir -p "$BUILD_DIR" "$CACHE_DIR"
+mkdir -p $NODE_BUILD_DIR
+mkdir -p $RUBY_CACHE_DIR
+mkdir -p $RUBY_GEM_DIR
+mkdir -p $BUILD_DIR/bin
 
-steptxt="----->"
+step "Checking out $MATTERMOST_REPO#$MATTERMOST_BRANCH"
+cd $BUILD_DIR
+git clone --depth 1 -b $MATTERMOST_BRANCH $MATTERMOST_REPO
+cp -R platform/* .
+rm -r platform
 
-step() {
-    echo "$steptxt $@"
-}
+IMPORTPATH=$(<$BUILD_DIR/Godeps/Godeps.json jq -r .ImportPath)
+GOVERSION=$(<$BUILD_DIR/Godeps/Godeps.json jq -r .GoVersion)
+GOFILENAME=${GOFILE:-$GOVERSION.$(uname|tr A-Z a-z)-amd64$(platext $GOVERSION).tar.gz}
+GODOWNLOADURL=${GOURL:-$(urlfor $GOVERSION $GOFILENAME)}
 
-start() {
-    echo -n "$steptxt $@... "
-}
+step "Downloading and installing node $NODE_VERSION"
+install_nodejs
 
-finished() {
-    echo "done"
-}
+step "Installing compass gem"
+install_compass
 
-# Install Node 5.1.0 and NPM
-mkdir -p "$BUILD_DIR/.heroku/node/"
-install_nodejs "$BUILD_DIR/.heroku/node"
-export PATH="$BUILD_DIR/.heroku/node/bin":$PATH
+step "Installing Go"
+install_go $GOVERSION $CACHE_DIR
 
-
-# Install compass gem
-ruby_cache_dir=$cache/ruby
-ruby_gem_dir=$BUILD_DIR/.heroku/ruby
-mkdir -p $ruby_cache_dir
-mkdir -p $ruby_gem_dir
-
-install_compass $ruby_cache_dir $ruby_gem_dir
-
-export PATH="$ruby_gem_dir/bin":$PATH
-export GEM_PATH=$ruby_gem_dir
-echo "PATH=$PATH"
-echo "GEM_PATH=$ruby_gem_dir"
-echo $(ls $ruby_gem_dir/bin)
-
-buildpack=$(cd "$(dirname $0)/.." && pwd)
-arch=$(uname -m|tr A-Z a-z)
-if test $arch = x86_64
-then arch=amd64
-fi
-plat=$(uname|tr A-Z a-z)-$arch
-
-PATH=$buildpack/$plat/bin:$PATH
-name=$(<$build/Godeps/Godeps.json jq -r .ImportPath)
-ver=$(<$build/Godeps/Godeps.json jq -r .GoVersion)
-
-install_go $ver $cache
-
-echo "-----> Building Mattermost"
-mkdir -p $build/bin
-GOBIN=$build/bin export GOBIN
-GOROOT=$cache/$ver/go export GOROOT
-GOPATH=$build/.heroku/go export GOPATH
-PATH=$GOROOT/bin:$PATH
-
+export GOBIN=$BUILD_DIR/bin
+export GOROOT=$CACHE_DIR/$GOVERSION/go
+export GOPATH=$BUILD_DIR/.heroku/go
+export PATH=$GOROOT/bin:$PATH
 mkdir -p $GOPATH/bin
+
 cp $(which godep) $GOPATH/bin/
 
-p=$GOPATH/src/$name
-mkdir -p $p
-cp -R $build/* $p
+step "Building Mattermost"
+MATTERMOSTPATH=$GOPATH/src/$IMPORTPATH
+mkdir -p $MATTERMOSTPATH
+cp -R $BUILD_DIR/* $MATTERMOSTPATH
 
-cd $p
+cd $MATTERMOSTPATH
 make build-server
 make build-client
 
-cp $p/web/static/js/bundle*.js $build/web/static/js/
-cp $p/web/static/js/bundle*.js.map $build/web/static/js/
-cp $p/web/static/js/libs*.js $build/web/static/js/
-cp -Rn $p/web/static/css/* $build/web/static/css/
-sed -i'.bak' 's|bundle.js|bundle.min.js|g' $build/web/templates/head.html
+cp $MATTERMOSTPATH/web/static/js/bundle*.js $BUILD_DIR/web/static/js/
+cp $MATTERMOSTPATH/web/static/js/bundle*.js.map $BUILD_DIR/web/static/js/
+cp $MATTERMOSTPATH/web/static/js/libs*.js $BUILD_DIR/web/static/js/
+cp -Rn $MATTERMOSTPATH/web/static/css/* $BUILD_DIR/web/static/css/
+sed -i'.bak' 's|bundle.js|bundle.min.js|g' $BUILD_DIR/web/templates/head.html
 
 mkdir data/
