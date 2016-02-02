@@ -71,6 +71,10 @@ cd $MATTERMOSTPATH
 make build-server
 make build-client
 
+mkdir -p $BUILD_DIR/web/static/js
+mkdir -p $BUILD_DIR/web/static/css
+mkdir -p $BUILD_DIR/web/static/templates
+
 cp $MATTERMOSTPATH/web/static/js/bundle*.js $BUILD_DIR/web/static/js/
 cp $MATTERMOSTPATH/web/static/js/bundle*.js.map $BUILD_DIR/web/static/js/
 cp $MATTERMOSTPATH/web/static/js/libs*.js $BUILD_DIR/web/static/js/
