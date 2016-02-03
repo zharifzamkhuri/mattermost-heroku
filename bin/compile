@@ -40,8 +40,8 @@ git clone --depth 1 -b $MATTERMOST_BRANCH $MATTERMOST_REPO platform
 # cp -R platform/* .
 # rm -r platform
 
-IMPORTPATH=$(<$BUILD_DIR/Godeps/Godeps.json jq -r .ImportPath)
-GOVERSION=$(<$BUILD_DIR/Godeps/Godeps.json jq -r .GoVersion)
+IMPORTPATH=$(<$BUILD_DIR/platform/Godeps/Godeps.json jq -r .ImportPath)
+GOVERSION=$(<$BUILD_DIR/platform/Godeps/Godeps.json jq -r .GoVersion)
 GOFILENAME=${GOFILE:-$GOVERSION.$(uname|tr A-Z a-z)-amd64$(platext $GOVERSION).tar.gz}
 GODOWNLOADURL=${GOURL:-$(urlfor $GOVERSION $GOFILENAME)}
 
@@ -66,20 +66,18 @@ step "Building Mattermost"
 MATTERMOSTPATH=$GOPATH/src/$IMPORTPATH
 mkdir -p $MATTERMOSTPATH
 cp -R $BUILD_DIR/platform/. $MATTERMOSTPATH
-rm -rf $BUILD_DIR/platform/.
+rm -rf $BUILD_DIR/platform
 
 cd $MATTERMOSTPATH
 make build-server
 make build-client
 
-mkdir -p web/static/js;
-
-cp $MATTERMOSTPATH/web/static/js/bundle*.js $BUILD_DIR/web/static/js/
-cp $MATTERMOSTPATH/web/static/js/bundle*.js.map $BUILD_DIR/web/static/js/
-cp $MATTERMOSTPATH/web/static/js/libs*.js $BUILD_DIR/web/static/js/
-cp -R $MATTERMOSTPATH/web/static/css/* $BUILD_DIR/web/static/css/
-cp -R $MATTERMOSTPATH/web/templates $BUILD_DIR/web
-
-sed -i'.bak' 's|bundle.js|bundle.min.js|g' $BUILD_DIR/web/templates/head.html
+sed -i'.bak' 's|react-0.14.3.js|react-0.14.3.min.js|g' $MATTERMOSTPATH/web/templates/head.html
+sed -i'.bak' 's|react-dom-0.14.3.js|react-dom-0.14.3.min.js|g' $MATTERMOSTPATH/web/templates/head.html
+sed -i'.bak' 's|jquery-2.1.4.js|jquery-2.1.4.min.js|g' $MATTERMOSTPATH/web/templates/head.html
+sed -i'.bak' 's|bootstrap-3.3.5.js|bootstrap-3.3.5.min.js|g' $MATTERMOSTPATH/web/templates/head.html
+sed -i'.bak' 's|react-bootstrap-0.28.1.js|react-bootstrap-0.28.1.min.js|g' $MATTERMOSTPATH/web/templates/head.html
+sed -i'.bak' 's|perfect-scrollbar-0.6.7.jquery.js|perfect-scrollbar-0.6.7.jquery.min.js|g' $MATTERMOSTPATH/web/templates/head.html
+sed -i'.bak' 's|bundle.js|bundle.min.js|g' $MATTERMOSTPATH/web/templates/head.html
 
 mkdir data/
