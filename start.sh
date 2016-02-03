@@ -47,4 +47,5 @@ export SEND_PUSH_NOTIFICATIONS=`echo ${SEND_PUSH_NOTIFICATIONS} | tr -d \"`
 
 lib/envsubst < config/config-heroku-template.json > config/config-heroku.json
 
-bin/platform -config=config/config-heroku.json
+cd .heroku/go/src/github.com/mattermost/platform
+/app/bin/platform -config=/app/config/config-heroku.json
