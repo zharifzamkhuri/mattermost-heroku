@@ -37,8 +37,8 @@ mkdir -p $BUILD_DIR/bin
 step "Checking out $MATTERMOST_REPO#$MATTERMOST_BRANCH"
 cd $BUILD_DIR
 git clone --depth 1 -b $MATTERMOST_BRANCH $MATTERMOST_REPO platform
-cp -R platform/* .
-rm -r platform
+# cp -R platform/* .
+# rm -r platform
 
 IMPORTPATH=$(<$BUILD_DIR/Godeps/Godeps.json jq -r .ImportPath)
 GOVERSION=$(<$BUILD_DIR/Godeps/Godeps.json jq -r .GoVersion)
@@ -65,16 +65,21 @@ cp $(which godep) $GOPATH/bin/
 step "Building Mattermost"
 MATTERMOSTPATH=$GOPATH/src/$IMPORTPATH
 mkdir -p $MATTERMOSTPATH
-cp -R $BUILD_DIR/* $MATTERMOSTPATH
+cp -R $BUILD_DIR/platform/. $MATTERMOSTPATH
+rm -rf $BUILD_DIR/platform/.
 
 cd $MATTERMOSTPATH
 make build-server
 make build-client
 
+mkdir -p web/static/js;
+
 cp $MATTERMOSTPATH/web/static/js/bundle*.js $BUILD_DIR/web/static/js/
 cp $MATTERMOSTPATH/web/static/js/bundle*.js.map $BUILD_DIR/web/static/js/
 cp $MATTERMOSTPATH/web/static/js/libs*.js $BUILD_DIR/web/static/js/
-cp -Rn $MATTERMOSTPATH/web/static/css/* $BUILD_DIR/web/static/css/
+cp -R $MATTERMOSTPATH/web/static/css/* $BUILD_DIR/web/static/css/
+cp -R $MATTERMOSTPATH/web/templates $BUILD_DIR/web
+
 sed -i'.bak' 's|bundle.js|bundle.min.js|g' $BUILD_DIR/web/templates/head.html
 
 mkdir data/
