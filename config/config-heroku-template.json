@@ -9,6 +9,7 @@
         "EnableOutgoingWebhooks": ${ENABLE_OUTGOING_WEBHOOKS},
         "EnablePostUsernameOverride": ${ENABLE_POST_USERNAME_OVERRIDE},
         "EnablePostIconOverride": ${ENABLE_POST_ICON_OVERRIDE},
+        "EnableHSTS": ${ENABLE_HSTS},
         "EnableTesting": false,
         "EnableSecurityFixAlert": true
     },

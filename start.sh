@@ -45,6 +45,9 @@ export ENABLE_TEAM_LISTING=`echo ${ENABLE_TEAM_LISTING} | tr -d \"`
 export SEND_PUSH_NOTIFICATIONS=${SEND_PUSH_NOTIFICATIONS:=false}
 export SEND_PUSH_NOTIFICATIONS=`echo ${SEND_PUSH_NOTIFICATIONS} | tr -d \"`
 
+export ENABLE_HSTS=${ENABLE_HSTS:=false}
+export ENABLE_HSTS=`echo ${ENABLE_HSTS} | tr -d \"`
+
 lib/envsubst < config/config-heroku-template.json > config/config-heroku.json
 
 cd .heroku/go/src/github.com/mattermost/platform
