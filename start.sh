@@ -50,5 +50,5 @@ export ENABLE_HSTS=`echo ${ENABLE_HSTS} | tr -d \"`
 
 lib/envsubst < config/config-heroku-template.json > config/config-heroku.json
 
-cd .heroku/go/src/github.com/mattermost/platform
+cd mattermost
 /app/bin/platform -config=/app/config/config-heroku.json
