@@ -85,6 +85,14 @@
         "ShowEmailAddress": true,
         "ShowFullName": true
     },
+    "SupportSettings": {
+        "TermsOfServiceLink": "${TERMS_OF_SERVICE_LINK}",
+        "PrivacyPolicyLink": "${PRIVACY_POLICY_LINK}",
+        "AboutLink": "${ABOUT_LINK}",
+        "HelpLink": "${HELP_LINK}",
+        "ReportAProblemLink": "${REPORT_PROBLEM_LINK}",
+        "SupportEmail": "${SUPPORT_EMAIL}"
+    },
     "GitLabSettings": {
         "Enable": false,
         "Secret": "",
