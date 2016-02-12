@@ -22,13 +22,12 @@ PLATFORM=$(get_platform)
 OS=$(get_os)
 CPU=$(get_cpu)
 NODE_BUILD_DIR=$BUILD_DIR/.heroku/node/
+BUILD_NUMBER="$(cat $ENV_DIR/BUILD_NUMBER)"
 NODE_VERSION="v5.6.0"
 NODE_DOWNLOAD_URL="http://s3pository.heroku.com/node/$NODE_VERSION/node-$NODE_VERSION-$OS-$CPU.tar.gz"
 MATTERMOST_REPO="$(cat $ENV_DIR/MATTERMOST_REPO)"
 MATTERMOST_BRANCH="$(cat $ENV_DIR/MATTERMOST_BRANCH)"
 PATH="$RUBY_GEM_DIR/bin:$BUILDPACK/$PLATFORM/bin:$BUILD_DIR/.heroku/node/bin":$PATH
-
-export BUILD_NUMBER="$(cat $ENV_DIR/BUILD_NUMBER)"
 
 mkdir -p "$BUILD_DIR" "$CACHE_DIR"
 mkdir -p $NODE_BUILD_DIR
@@ -74,7 +73,7 @@ ln -s $MATTERMOSTPATH $BUILD_DIR/mattermost
 
 # Build the server and the client
 cd $MATTERMOSTPATH
-make build-server
+make BUILD_NUMBER=$BUILD_NUMBER build-server
 make build-client
 
 # package the dist directory
