@@ -50,5 +50,17 @@ export ENABLE_HSTS=`echo ${ENABLE_HSTS} | tr -d \"`
 
 lib/envsubst < config/config-heroku-template.json > config/config-heroku.json
 
+function _term {
+  echo "Sending SIGTERM to mattermost"
+
+  kill --TERM "$PID" 2>/dev/null
+}
+
+trap _term SIGTERM
+
 cd mattermost
-/app/bin/platform -config=/app/config/config-heroku.json
+/app/bin/platform -config=/app/config/config-heroku.json &
+
+PID=$!
+
+wait "$PID"

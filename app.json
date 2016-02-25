@@ -14,6 +14,10 @@
         "value": "v1.4.0",
         "description": "Git branch or tag to checkout for building"
     },
+    "BUILD_NUMBER": {
+        "value": "Mattermost",
+        "description": "A custom build identifier"
+    },
     "TEAM_SETTINGS__SITE_NAME": "Mattermost",
     "SQL_SETTINGS__AT_REST_ENCRYPT_KEY": {
             "description": "SqlSettings AtRestEncryptKey",
