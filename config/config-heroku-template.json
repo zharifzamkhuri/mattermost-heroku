@@ -25,8 +25,8 @@
         "DriverName": "postgres",
         "DataSource": "${DATABASE_URL}",
         "DataSourceReplicas": [],
-        "MaxIdleConns": 10,
-        "MaxOpenConns": 10,
+        "MaxIdleConns": ${MAX_IDLE_CONNS},
+        "MaxOpenConns": ${MAX_OPEN_CONNS},
         "Trace": false,
         "AtRestEncryptKey": "${SQL_SETTINGS__AT_REST_ENCRYPT_KEY}"
     },
@@ -78,7 +78,7 @@
         "EnableRateLimiter": true,
         "PerSec": 10,
         "MemoryStoreSize": 10000,
-        "VaryByRemoteAddr": true,
+        "VaryByRemoteAddr": ${VARY_BY_REMOTE_ADDR},
         "VaryByHeader": "${VARY_BY_HEADER}"
     },
     "PrivacySettings": {

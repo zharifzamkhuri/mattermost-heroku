@@ -48,6 +48,9 @@ export SEND_PUSH_NOTIFICATIONS=`echo ${SEND_PUSH_NOTIFICATIONS} | tr -d \"`
 export ENABLE_HSTS=${ENABLE_HSTS:=false}
 export ENABLE_HSTS=`echo ${ENABLE_HSTS} | tr -d \"`
 
+export VARY_BY_REMOTE_ADDR=${VARY_BY_REMOTE_ADDR:=false}
+export VARY_BY_REMOTE_ADDR=`echo ${VARY_BY_REMOTE_ADDR} | tr -d \"`
+
 lib/envsubst < config/config-heroku-template.json > config/config-heroku.json
 
 function _term {
