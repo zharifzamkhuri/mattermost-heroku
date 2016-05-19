@@ -72,8 +72,6 @@ ln -s $MATTERMOSTPATH $BUILD_DIR/mattermost
 
 # Build the server and the client
 cd $MATTERMOSTPATH
-make BUILD_NUMBER=$BUILD_NUMBER build-linux
-make build-client
 
 # package the dist directory
 make package
@@ -83,7 +81,7 @@ rm $BUILD_DIR/mattermost && mkdir $BUILD_DIR/mattermost
 
 # Unpack the compiled source
 cd $BUILD_DIR
-tar -zxf $MATTERMOSTPATH/dist/mattermost.tar.gz --strip-components=1 -C $BUILD_DIR/mattermost
+tar -zxf $MATTERMOSTPATH/dist/mattermost-team-linux-amd64.tar.gz --strip-components=1 -C $BUILD_DIR/mattermost
 
 # clean up (part 2)
 rm -rf $MATTERMOSTPATH
