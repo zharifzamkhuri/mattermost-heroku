@@ -53,7 +53,6 @@ install_compass
 step "Installing Go"
 install_go $GOVERSION $CACHE_DIR
 
-export GOBIN=$BUILD_DIR/bin
 export GOROOT=$CACHE_DIR/$GOVERSION/go
 export GOPATH=$BUILD_DIR/.heroku/go
 export PATH=$GOROOT/bin:$PATH
@@ -77,7 +76,6 @@ make BUILD_NUMBER=$BUILD_NUMBER build-linux
 make build-client
 
 # package the dist directory
-cp $GOBIN/platform $GOPATH/bin/
 make package
 
 # clean up (part 1)
