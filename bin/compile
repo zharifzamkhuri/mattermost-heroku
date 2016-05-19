@@ -83,7 +83,7 @@ rm $BUILD_DIR/mattermost && mkdir $BUILD_DIR/mattermost
 cd $BUILD_DIR
 tar -zxf $MATTERMOSTPATH/dist/mattermost-team-linux-amd64.tar.gz --strip-components=1 -C $BUILD_DIR/mattermost
 
-cp $BUILD_DIR/mattermost/platform $GOPATH/bin/
+cp $BUILD_DIR/mattermost/bin/platform $GOPATH/bin/
 
 # clean up (part 2)
 rm -rf $MATTERMOSTPATH
