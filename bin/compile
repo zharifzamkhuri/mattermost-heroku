@@ -73,7 +73,7 @@ ln -s $MATTERMOSTPATH $BUILD_DIR/mattermost
 
 # Build the server and the client
 cd $MATTERMOSTPATH
-make BUILD_NUMBER=$BUILD_NUMBER build-server
+make BUILD_NUMBER=$BUILD_NUMBER build-linux
 make build-client
 
 # package the dist directory
