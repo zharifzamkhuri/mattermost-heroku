@@ -51,6 +51,9 @@ export ENABLE_HSTS=`echo ${ENABLE_HSTS} | tr -d \"`
 export VARY_BY_REMOTE_ADDR=${VARY_BY_REMOTE_ADDR:=false}
 export VARY_BY_REMOTE_ADDR=`echo ${VARY_BY_REMOTE_ADDR} | tr -d \"`
 
+export ENABLE_COMMANDS=${ENABLE_COMMANDS:=false}
+export ENABLE_COMMANDS=`echo ${ENABLE_COMMANDS} | tr -d \"`
+
 lib/envsubst < config/config-heroku-template.json > config/config-heroku.json
 
 function _term {

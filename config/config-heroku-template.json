@@ -10,6 +10,7 @@
         "EnablePostUsernameOverride": ${ENABLE_POST_USERNAME_OVERRIDE},
         "EnablePostIconOverride": ${ENABLE_POST_ICON_OVERRIDE},
         "EnableHSTS": ${ENABLE_HSTS},
+        "EnableCommands": ${ENABLE_COMMANDS},
         "EnableTesting": false,
         "EnableSecurityFixAlert": true
     },
