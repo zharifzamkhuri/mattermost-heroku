@@ -20,7 +20,8 @@
         "EnableTeamCreation": ${ENABLE_TEAM_CREATION},
         "EnableUserCreation": ${ENABLE_USER_CREATION},
         "RestrictCreationToDomains": "${RESTRICT_CREATION_TO_DOMAINS}",
-        "EnableTeamListing": ${ENABLE_TEAM_LISTING}
+        "EnableTeamListing": ${ENABLE_TEAM_LISTING},
+        "EnableOpenServer": ${ENABLE_OPEN_SERVER}
     },
     "SqlSettings": {
         "DriverName": "postgres",
