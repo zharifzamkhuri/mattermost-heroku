@@ -55,13 +55,13 @@ urlfor() {
 }
 
 install_go() {
-    export GOROOT=$CACHE_DIR/$GOVERSION/go
-    export GOPATH=$BUILD_DIR/.heroku/go
-    export PATH=$GOROOT/bin:$PATH
-
     GOVERSION=go1.6.1
     GOFILENAME=${GOFILE:-$GOVERSION.$(uname|tr A-Z a-z)-amd64$(platext $GOVERSION).tar.gz}
     GODOWNLOADURL=${GOURL:-$(urlfor $GOVERSION $GOFILENAME)}
+    
+    export GOROOT=$CACHE_DIR/$GOVERSION/go
+    export GOPATH=$BUILD_DIR/.heroku/go
+    export PATH=$GOROOT/bin:$PATH
 
     if test -d $CACHE_DIR/$GOVERSION/go
     then
