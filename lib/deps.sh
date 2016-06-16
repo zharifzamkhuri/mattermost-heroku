@@ -23,6 +23,8 @@ get_platform() {
 }
 
 install_nodejs() {
+  NODE_VERSION="v6.2.1"
+  NODE_DOWNLOAD_URL="http://s3pository.heroku.com/node/$NODE_VERSION/node-$NODE_VERSION-$OS-$CPU.tar.gz"
   curl "$NODE_DOWNLOAD_URL" --silent --fail -o /tmp/node.tar.gz || (step "Unable to download node $NODE_VERSION; does it exist?" && false)
   tar xzf /tmp/node.tar.gz -C /tmp
   rm -rf $NODE_BUILD_DIR/*
@@ -53,6 +55,14 @@ urlfor() {
 }
 
 install_go() {
+    export GOROOT=$CACHE_DIR/$GOVERSION/go
+    export GOPATH=$BUILD_DIR/.heroku/go
+    export PATH=$GOROOT/bin:$PATH
+
+    GOVERSION=go1.6.1
+    GOFILENAME=${GOFILE:-$GOVERSION.$(uname|tr A-Z a-z)-amd64$(platext $GOVERSION).tar.gz}
+    GODOWNLOADURL=${GOURL:-$(urlfor $GOVERSION $GOFILENAME)}
+
     if test -d $CACHE_DIR/$GOVERSION/go
     then
         echo "Using cached version: $GOVERSION"
@@ -65,16 +75,6 @@ install_go() {
             tar zxf $GOFILENAME
             rm -f $GOFILENAME
         cd - >/dev/null
+        go get github.com/tools/godep
     fi
-}
-
-install_compass() {
-  if test -e $RUBY_CACHE_DIR/bin/compass
-  then
-      cp -R $RUBY_CACHE_DIR/* $RUBY_GEM_DIR
-      step "using compass 1.0.3"
-  else
-      # Install compass gem
-      gem install --install-dir $RUBY_GEM_DIR -v 1.0.3 compass
-  fi
 }

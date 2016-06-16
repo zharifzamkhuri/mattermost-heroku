@@ -15,75 +15,34 @@ source $BUILDPACK/lib/deps.sh
 BUILD_DIR=$1
 CACHE_DIR=$2
 ENV_DIR=$3
-RUBY_CACHE_DIR=$CACHE_DIR/ruby
-RUBY_GEM_DIR=$BUILD_DIR/.heroku/ruby
-GEM_PATH=$RUBY_GEM_DIR
 PLATFORM=$(get_platform)
 OS=$(get_os)
 CPU=$(get_cpu)
 NODE_BUILD_DIR=$BUILD_DIR/.heroku/node/
 BUILD_NUMBER="$(cat $ENV_DIR/BUILD_NUMBER)"
-NODE_VERSION="v6.2.0"
-NODE_DOWNLOAD_URL="http://s3pository.heroku.com/node/$NODE_VERSION/node-$NODE_VERSION-$OS-$CPU.tar.gz"
 MATTERMOST_REPO="$(cat $ENV_DIR/MATTERMOST_REPO)"
 MATTERMOST_BRANCH="$(cat $ENV_DIR/MATTERMOST_BRANCH)"
-PATH="$RUBY_GEM_DIR/bin:$BUILDPACK/$PLATFORM/bin:$BUILD_DIR/.heroku/node/bin":$PATH
+PATH="$BUILDPACK/$PLATFORM/bin:$BUILD_DIR/.heroku/node/bin":$PATH
 
 mkdir -p "$BUILD_DIR" "$CACHE_DIR"
 mkdir -p $NODE_BUILD_DIR
-mkdir -p $RUBY_CACHE_DIR
-mkdir -p $RUBY_GEM_DIR
 mkdir -p $BUILD_DIR/bin
 
-step "Checking out $MATTERMOST_REPO#$MATTERMOST_BRANCH"
 cd $BUILD_DIR
-git clone --depth 1 -b $MATTERMOST_BRANCH $MATTERMOST_REPO platform
 
-IMPORTPATH=$(<$BUILD_DIR/platform/Godeps/Godeps.json jq -r .ImportPath)
-GOVERSION=$(<$BUILD_DIR/platform/Godeps/Godeps.json jq -r .GoVersion)
-GOFILENAME=${GOFILE:-$GOVERSION.$(uname|tr A-Z a-z)-amd64$(platext $GOVERSION).tar.gz}
-GODOWNLOADURL=${GOURL:-$(urlfor $GOVERSION $GOFILENAME)}
-
-step "Downloading and installing node $NODE_VERSION"
+step "Downloading and installing node"
 install_nodejs
-
-step "Installing compass gem"
-install_compass
 
 step "Installing Go"
 install_go $GOVERSION $CACHE_DIR
 
-export GOROOT=$CACHE_DIR/$GOVERSION/go
-export GOPATH=$BUILD_DIR/.heroku/go
-export PATH=$GOROOT/bin:$PATH
-mkdir -p $GOPATH/bin
+step "Checking out $MATTERMOST_REPO#$MATTERMOST_BRANCH"
+MATTERMOSTPATH=$GOPATH/src/github.com/mattermost
+mkdir -p $MATTERMOSTPATH
+git clone --depth 1 -b $MATTERMOST_BRANCH $MATTERMOST_REPO $MATTERMOSTPATH/platform
 
-cp $(which godep) $GOPATH/bin/
 
 step "Building Mattermost"
-MATTERMOSTPATH=$GOPATH/src/$IMPORTPATH
-mkdir -p $MATTERMOSTPATH
-
-cp -R $BUILD_DIR/platform/. $MATTERMOSTPATH
-rm -rf $BUILD_DIR/platform
-
-# the build fails if this link doesn't point to the source directory
-ln -s $MATTERMOSTPATH $BUILD_DIR/mattermost
-
-# Build the server and the client
-cd $MATTERMOSTPATH
-
-# package the dist directory
-make package
-
-# clean up (part 1)
-rm $BUILD_DIR/mattermost && mkdir $BUILD_DIR/mattermost
-
-# Unpack the compiled source
-cd $BUILD_DIR
-tar -zxf $MATTERMOSTPATH/dist/mattermost-team-linux-amd64.tar.gz --strip-components=1 -C $BUILD_DIR/mattermost
-
-cp $BUILD_DIR/mattermost/bin/platform $BUILD_DIR/bin/
-
-# clean up (part 2)
-rm -rf $MATTERMOSTPATH
+cd $MATTERMOSTPATH/platform
+make build-client
+make build-linux
