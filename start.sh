@@ -48,6 +48,9 @@ export SEND_PUSH_NOTIFICATIONS=`echo ${SEND_PUSH_NOTIFICATIONS} | tr -d \"`
 export ENABLE_HSTS=${ENABLE_HSTS:=false}
 export ENABLE_HSTS=`echo ${ENABLE_HSTS} | tr -d \"`
 
+export UPGRADE_HTTP=${UPGRADE_HTTP:=false}
+export UPGRADE_HTTP=`echo ${UPGRADE_HTTP} | tr -d \"`
+
 export VARY_BY_REMOTE_ADDR=${VARY_BY_REMOTE_ADDR:=false}
 export VARY_BY_REMOTE_ADDR=`echo ${VARY_BY_REMOTE_ADDR} | tr -d \"`
 
