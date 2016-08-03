@@ -77,7 +77,8 @@
         "ApplePushCertPublic": "",
         "ApplePushCertPrivate": "",
         "SendPushNotifications": ${SEND_PUSH_NOTIFICATIONS},
-        "PushNotificationServer": "${PUSH_NOTIFICATION_SERVER}"
+        "PushNotificationServer": "${PUSH_NOTIFICATION_SERVER}",
+        "PushNotificationContents": "${PUSH_NOTIFICATION_CONTENTS}"
     },
     "RateLimitSettings": {
         "EnableRateLimiter": true,
