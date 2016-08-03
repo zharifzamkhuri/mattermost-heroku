@@ -2,48 +2,13 @@
 
 set -e
 
-BUILDPACK=$(cd $(dirname $0); cd ..; pwd)
-
-STEPTXT="----->"
-
-step() {
-    echo "$STEPTXT $@"
-}
-
-source $BUILDPACK/lib/deps.sh
-
 BUILD_DIR=$1
 CACHE_DIR=$2
 ENV_DIR=$3
-PLATFORM=$(get_platform)
-OS=$(get_os)
-CPU=$(get_cpu)
-NODE_BUILD_DIR=$BUILD_DIR/.heroku/node/
-BUILD_NUMBER="$(cat $ENV_DIR/BUILD_NUMBER)"
-MATTERMOST_REPO="$(cat $ENV_DIR/MATTERMOST_REPO)"
-MATTERMOST_BRANCH="$(cat $ENV_DIR/MATTERMOST_BRANCH)"
 
-export PATH=$BUILDPACK/$PLATFORM/bin:$BUILD_DIR/.heroku/node/bin:$PATH
+MATTERMOST_VERSION="$(cat $ENV_DIR/MATTERMOST_REPO)"
+MATTERMOST_URL="https://releases.mattermost.com/$MATTERMOST_VERSION/mattermost-enterprise-$MATTERMOST_VERSION-linux-amd64.tar.gz"
 
-mkdir -p "$BUILD_DIR" "$CACHE_DIR"
-mkdir -p $NODE_BUILD_DIR
-mkdir -p $BUILD_DIR/bin
-
-cd $BUILD_DIR
-
-step "Downloading and installing node"
-install_nodejs
-
-step "Installing Go"
-install_go $GOVERSION $CACHE_DIR
-
-step "Checking out $MATTERMOST_REPO#$MATTERMOST_BRANCH"
-MATTERMOSTPATH=$GOPATH/src/github.com/mattermost
-mkdir -p $MATTERMOSTPATH
-git clone --depth 1 -b $MATTERMOST_BRANCH $MATTERMOST_REPO $MATTERMOSTPATH/platform
-
-
-step "Building Mattermost"
-cd $MATTERMOSTPATH/platform
-make build-client
-make build-linux
+step "Downloading and unpacking Mattermost"
+curl -s -L "${MATTERMOST_URL}" | tar -zxf - --strip-components=1 -C ${BUILD_DIR}
+mkdir data/

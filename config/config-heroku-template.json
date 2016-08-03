@@ -1,6 +1,6 @@
 {
     "ServiceSettings": {
-        "ListenAddress": "0.0.0.0:${PORT}",
+        "ListenAddress": "localhost:${MATTERMOST_PORT}",
         "MaximumLoginAttempts": 10,
         "SegmentDeveloperKey": "",
         "GoogleDeveloperKey": "",
