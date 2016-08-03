@@ -12,6 +12,9 @@ EMAIL_SETTINGS__PASSWORD_RESET_SALT=$(printf "${EMAIL_SETTINGS__PASSWORD_RESET_S
 # push notifications server
 export PUSH_NOTIFICATION_SERVER=${PUSH_NOTIFICATION_SERVER:=""}
 
+# public channel management
+export RESTRICT_PUBLIC_CHANNEL_MANAGEMENT=${RESTRICT_PUBLIC_CHANNEL_MANAGEMENT:="all"}
+
 # default s3 stuff to empty if it's not configured
 export FILE_SETTINGS__AMAZON_S3_ACCESS_KEY_ID=${FILE_SETTINGS__AMAZON_S3_ACCESS_KEY_ID:=""}
 export FILE_SETTINGS__AMAZON_S3_SECRET_ACCESS_KEY=${FILE_SETTINGS__AMAZON_S3_SECRET_ACCESS_KEY:=""}
@@ -62,6 +65,10 @@ export ENABLE_COMMANDS=`echo ${ENABLE_COMMANDS} | tr -d \"`
 
 export ENABLE_OPEN_SERVER=${ENABLE_OPEN_SERVER:=false}
 export ENABLE_OPEN_SERVER=`echo ${ENABLE_OPEN_SERVER} | tr -d \"`
+
+
+export ENABLE_2FA=${ENABLE_2FA:=false}
+export ENABLE_2FA=`echo ${ENABLE_2FA} | tr -d \"`
 
 lib/envsubst < config/config-heroku-template.json > config/config-heroku.json
 
