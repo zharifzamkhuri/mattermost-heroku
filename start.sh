@@ -70,8 +70,7 @@ function _term {
 
 trap _term SIGTERM
 
-cd /app/.heroku/go/src/github.com/mattermost/platform
-/app/.heroku/go/bin/platform -config=/app/config/config-heroku.json &
+cd /app/platform -config=/app/config/config-heroku.json &
 
 PID=$!
 
