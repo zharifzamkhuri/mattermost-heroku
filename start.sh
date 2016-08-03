@@ -73,6 +73,10 @@ trap _term SIGTERM
 pwd
 
 ls -l
+ 
+ls -l bin
+
+ls -l webapp
 
 cd /app/platform -config=/app/config/config-heroku.json &
 
