@@ -38,7 +38,7 @@
     "LogSettings": {
         "EnableConsole": true,
         "ConsoleLevel": "${LOG_LEVEL}",
-        "EnableFile": true,
+        "EnableFile": ${ENABLE_FILE},
         "FileLevel": "INFO",
         "FileFormat": "",
         "FileLocation": ""

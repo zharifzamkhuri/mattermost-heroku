@@ -69,9 +69,11 @@ export ENABLE_COMMANDS=`echo ${ENABLE_COMMANDS} | tr -d \"`
 export ENABLE_OPEN_SERVER=${ENABLE_OPEN_SERVER:=false}
 export ENABLE_OPEN_SERVER=`echo ${ENABLE_OPEN_SERVER} | tr -d \"`
 
-
 export ENABLE_2FA=${ENABLE_2FA:=false}
 export ENABLE_2FA=`echo ${ENABLE_2FA} | tr -d \"`
+
+export ENABLE_FILE=${ENABLE_FILE:=false}
+export ENABLE_FILE=`echo ${ENABLE_FILE} | tr -d \"`
 
 lib/envsubst < config/config-heroku-template.json > config/config-heroku.json
 
