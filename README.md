@@ -82,7 +82,7 @@ Use the deploy menu on the Heroku dashboard to trigger manual deploys.
    Without s3 backing this is not anything more than a one time demo.
 
 ## Enterprise Edition
-
+Activate it as instructed in the docs https://docs.mattermost.com/install/ee-install.html
 
 
 ## To Do
