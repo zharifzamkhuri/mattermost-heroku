@@ -78,7 +78,7 @@ ls -l bin
 
 ls -l webapp
 
-cd /app/platform -config=/app/config/config-heroku.json &
+bin/platform -config=/app/config/config-heroku.json &
 
 PID=$!
 
