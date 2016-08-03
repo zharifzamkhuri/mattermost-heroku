@@ -19,7 +19,7 @@ Set `MATTERMOST_TYPE` to either 'team' or 'enterprise'
 [Check out the configuration docs for more info](https://docs.mattermost.com/administration/config-settings.html)
 
 |Variable|Purpose|type|default|
-|--------|-------|
+|--------|-------|----|-------|
 |MATTERMOST_PORT|The port you want Nginx and Mattermost to talk to each other on|int|8080|
 |ENABLE_OUTGOING_WEBHOOKS|Enable the creation of outgoing webhooks|bool|false|
 |ENABLE_POST_USERNAME_OVERRIDE|Allow posts to override the username field, useful for webhook integrations|bool|false|
@@ -67,11 +67,8 @@ Set `MATTERMOST_TYPE` to either 'team' or 'enterprise'
 |ABOUT_LINK|Link to site's about page|string||
 |HELP_LINK|Link to help content|string||
 |REPORT_PROBLEM_LINK|link to report issues|string||
-|SUPPORT_EMAIL|email to send support requests to|string||
+|SUPPORT_EMAIL|email to send support requests to|string|
 
-
-
-MATTERMOST_PORT
 
 ## Rebuilding
 
