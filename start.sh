@@ -70,6 +70,10 @@ function _term {
 
 trap _term SIGTERM
 
+pwd
+
+ls -l
+
 cd /app/platform -config=/app/config/config-heroku.json &
 
 PID=$!
