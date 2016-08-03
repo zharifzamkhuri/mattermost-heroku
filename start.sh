@@ -70,16 +70,12 @@ function _term {
 
 trap _term SIGTERM
 
-pwd
-
-ls -l
- 
-ls -l bin
-
-ls -l webapp
-
 bin/platform -config=/app/config/config-heroku.json &
 
 PID=$!
+
+sleep 5
+
+touch /tmp/app-initialized
 
 wait "$PID"
