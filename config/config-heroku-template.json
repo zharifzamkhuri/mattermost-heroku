@@ -89,6 +89,13 @@
         "ShowEmailAddress": true,
         "ShowFullName": true
     },
+    "PasswordSettings": {
+        "MinimumLength": 10,
+        "Lowercase": true,
+        "Number": true,
+        "Uppercase": true,
+        "Symbol": false
+    },
     "SupportSettings": {
         "TermsOfServiceLink": "${TERMS_OF_SERVICE_LINK}",
         "PrivacyPolicyLink": "${PRIVACY_POLICY_LINK}",
