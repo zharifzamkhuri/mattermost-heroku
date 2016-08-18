@@ -22,7 +22,10 @@
         "RestrictCreationToDomains": "${RESTRICT_CREATION_TO_DOMAINS}",
         "EnableTeamListing": ${ENABLE_TEAM_LISTING},
         "EnableOpenServer": ${ENABLE_OPEN_SERVER},
-        "RestrictPublicChannelManagement": "${RESTRICT_PUBLIC_CHANNEL_MANAGEMENT}"
+        "RestrictPublicChannelManagement": "${RESTRICT_PUBLIC_CHANNEL_MANAGEMENT}",
+        "EnableCustomBrand": ${ENABLE_CUSTOM_BRAND},
+        "CustomBrandText": "${CUSTOM_BRAND_TEXT}",
+        "CustomDescriptionText": "${CUSTOM_DESCRIPTION_TEXT}"
     },
     "SqlSettings": {
         "DriverName": "postgres",

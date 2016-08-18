@@ -67,7 +67,10 @@ Set `MATTERMOST_TYPE` to either 'team' or 'enterprise'
 |ABOUT_LINK|Link to site's about page|string||
 |HELP_LINK|Link to help content|string||
 |REPORT_PROBLEM_LINK|link to report issues|string||
-|SUPPORT_EMAIL|email to send support requests to|string|
+|SUPPORT_EMAIL|email to send support requests to|string||
+|ENABLE_CUSTOM_BRAND|Enable custom branding|bool|false|
+|CUSTOM_BRAND_TEXT|Markdown formated string to desplay with custom branding|string||
+|CUSTOM_DESCRIPTION_TEXT|String of text describing the server|string|All team communication in one place, searchable and accessible anywhere|
 
 
 ## Rebuilding
