@@ -5,7 +5,7 @@
   "keywords": ["mattermost"],
   "success_url": "/",
   "env": {
-    "BUILDPACK_URL": "http://github.com/cadecairos/mattermost-heroku.git#mattermoz",
+    "BUILDPACK_URL": "http://github.com/cadecairos/mattermost-heroku.git#master",
     "MATTERMOST_REPO": {
         "value": "https://github.com/mattermost/platform",
         "description": "A tarball containing the mattermost source to download + build - NOTE: this CAN NOT be the prebuild and packaged release, only the source"
