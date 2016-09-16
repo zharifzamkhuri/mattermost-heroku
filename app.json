@@ -9,7 +9,7 @@
       "url": "https://github.com/cadecairos/nginx-buildpack.git#v1.0.0"
     },
     {
-      "url": "http://github.com/mozilla/mattermost-heroku.git#v1.0.2"
+      "url": "http://github.com/mozilla/mattermost-heroku.git#v1.0.3"
     }
   ],
   "env": {
@@ -20,6 +20,11 @@
     "MATTERMOST_TYPE": {
         "value": "team",
         "description": "team or enterprise Mattermost"
+    },
+    "MATTERMOST_PORT": {
+        "value": "8080",
+        "description": "The port you want Nginx and Mattermost to talk to each other on - Don't change this unless you change the Nginx buildpack too.",
+        "required": true
     },
     "TEAM_SETTINGS__SITE_NAME": "Mattermost",
     "SQL_SETTINGS__AT_REST_ENCRYPT_KEY": {
