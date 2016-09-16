@@ -6,10 +6,10 @@
   "success_url": "/",
   "buildpacks": [
     {
-      "url": "https://github.com/cadecairos/nginx-buildpack.git#1.0.0"
+      "url": "https://github.com/cadecairos/nginx-buildpack.git#v1.0.0"
     },
     {
-      "url": "http://github.com/mozilla/mattermost-heroku.git#1.0.0"
+      "url": "http://github.com/mozilla/mattermost-heroku.git#v1.0.0"
     }
   ],
   "env": {
