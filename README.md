@@ -3,15 +3,17 @@
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
 
 This buildpack is an [inline buildpack](https://github.com/kr/heroku-buildpack-inline/) (tldr: this repo deploys to Heroku and uses itself as a buildpack) for deploying [Mattermost](https://mattermost.org) to [Heroku](https://heroku.com).
-It must used in tandem with [This Nginx Buildpack I customized](https://github.com/cadecairos/nginx-buildback). Since Mattermost is not a [12 factor app](http://12factor.net/config), the startup script writes your Heroku environment variables to a config file when the dyno starts up.
+It must used in tandem with [This customized Nginx Buildpack](https://github.com/cadecairos/nginx-buildback). 
 
-### Known to work with Mattermost 3.2.0 Team and Enterprise editions
+Mattermost is not a [12 factor compatible app](http://12factor.net/config), so the startup script writes your Heroku environment variables to a config file when the dyno starts.
+
+### Known to work with Mattermost 3.4.0 Team and Enterprise editions
 
 ## Configuration options
 
 ### Building
 
-Set `MATTERMOST_VERSION` to the release version you'd like to install.
+Set `MATTERMOST_VERSION` to the release version you'd like to install. i.e. '3.4.0'
 Set `MATTERMOST_TYPE` to either 'team' or 'enterprise'
 
 ### Mattermost
@@ -86,7 +88,6 @@ Use the deploy menu on the Heroku dashboard to trigger manual deploys.
 
 ## Enterprise Edition
 Activate it as instructed in the docs https://docs.mattermost.com/install/ee-install.html
-
 
 ## To Do
 
