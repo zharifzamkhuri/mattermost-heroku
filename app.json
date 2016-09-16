@@ -115,12 +115,12 @@
             "required": false
     },
     "MAX_IDLE_CONNS": {
-            "value": 10,
+            "value": "10",
             "description": "Maximum number of idle connections held open to the database",
             "required": true
     },
     "MAX_OPEN_CONNS": {
-            "value": 10,
+            "value": "10",
             "description": "Maximum number of open connections held open to the database",
             "required": true
     }
