@@ -1,22 +1,25 @@
 {
   "name": "Mattermost Heroku",
   "description": "Deploy Mattermost to Heroku",
-  "repository": "https://github.com/cadecairos/mattermost-heroku",
-  "keywords": ["mattermost"],
+  "repository": "https://github.com/mozilla/mattermost-heroku",
+  "keywords": ["mattermost", "nginx"],
   "success_url": "/",
+  "buildpacks": [
+    {
+      "url": "https://github.com/cadecairos/nginx-buildpack.git#1.0.0"
+    },
+    {
+      "url": "http://github.com/mozilla/mattermost-heroku.git#1.0.0"
+    }
+  ],
   "env": {
-    "BUILDPACK_URL": "http://github.com/cadecairos/mattermost-heroku.git#master",
-    "MATTERMOST_REPO": {
-        "value": "https://github.com/mattermost/platform",
-        "description": "A tarball containing the mattermost source to download + build - NOTE: this CAN NOT be the prebuild and packaged release, only the source"
+    "MATTERMOST_VERSION": {
+        "value": "3.4.0",
+        "description": "Mattermost version to install, semver format"
     },
-    "MATTERMOST_BRANCH": {
-        "value": "v1.4.0",
-        "description": "Git branch or tag to checkout for building"
-    },
-    "BUILD_NUMBER": {
-        "value": "Mattermost",
-        "description": "A custom build identifier"
+    "MATTERMOST_TYPE": {
+        "value": "team",
+        "description": "team or enterprise Mattermost"
     },
     "TEAM_SETTINGS__SITE_NAME": "Mattermost",
     "SQL_SETTINGS__AT_REST_ENCRYPT_KEY": {
