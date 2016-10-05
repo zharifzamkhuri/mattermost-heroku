@@ -47,6 +47,7 @@ export RESTRICT_DIRECT_MESSAGE=`echo ${RESTRICT_DIRECT_MESSAGE:="any"}`
 ################
 # SQL Settings #
 ################
+export DRIVER_NAME=`echo ${DRIVER_NAME:="postgres"}`
 export SQL_SETTINGS__AT_REST_ENCRYPT_KEY=$(printf "${SQL_SETTINGS__AT_REST_ENCRYPT_KEY}%.0s" {1..32} | cut -c -32)
 export MAX_IDLE_CONNS=`echo ${MAX_IDLE_CONNS:=10} | tr -d \"`
 export MAX_OPEN_CONNS=`echo ${MAX_OPEN_CONNS:=10} | tr -d \"`
