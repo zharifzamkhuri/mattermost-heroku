@@ -42,6 +42,7 @@ export ENABLE_CUSTOM_BRAND=`echo ${ENABLE_CUSTOM_BRAND:=false} | tr -d \"`
 export MAX_USERS_PER_TEAM=`echo ${MAX_USERS_PER_TEAM:=50} | tr -d \"`
 export RESTRICT_TEAM_NAMES=`echo ${RESTRICT_TEAM_NAMES:=true} | tr -d \"`
 export USER_STATUS_AWAY_TIMEOUT=`echo ${USER_STATUS_AWAY_TIMEOUT:=300} | tr -d \"`
+export RESTRICT_DIRECT_MESSAGE=`echo ${RESTRICT_DIRECT_MESSAGE:="any"}`
 
 ################
 # SQL Settings #
