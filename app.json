@@ -9,7 +9,7 @@
       "url": "https://github.com/cadecairos/nginx-buildpack.git#v1.0.0"
     },
     {
-      "url": "http://github.com/mozilla/mattermost-heroku.git#variable_upgrade"
+      "url": "http://github.com/mozilla/mattermost-heroku.git#v1.1.0"
     }
   ],
   "env": {
