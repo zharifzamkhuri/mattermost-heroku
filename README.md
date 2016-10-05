@@ -20,7 +20,7 @@ Set `MATTERMOST_TYPE` to either 'team' or 'enterprise'
 
 ### Mattermost Configuration
 
-Mattermost-Heroku supports every config option that Mattermost 3.4 defines. You can see the mapping between config options and Heroku environment variables in the [start.sh file](/start.sh).
+Mattermost-Heroku supports every config option that Mattermost 3.4 defines. You can see the mapping between Mattermost config settings and Heroku environment variables in the [configuration template](/config/config-heroku-template.json).
 
  [Check out the Mattermost configuration documentation for detailed information about each option.](https://docs.mattermost.com/administration/config-settings.html)
 
