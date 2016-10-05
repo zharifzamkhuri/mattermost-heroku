@@ -64,16 +64,16 @@ export ENABLE_DIAGNOSTICS=`echo ${ENABLE_DIAGNOSTICS:=true} | tr -d \"`
 #################
 export FILE_SETTINGS__PUBLIC_LINK_SALT=$(printf "${FILE_SETTINGS__PUBLIC_LINK_SALT}%.0s" {1..32} | cut -c -32)
 
-export MAX_FILE_SIZE=`${MAX_FILE_SIZE:=52428800} | tr -d \"`
-export ENABLE_PUBLIC_LINK=`${ENABLE_PUBLIC_LINK:=false} | tr -d \"`
-export THUMBNAIL_WIDTH=`${THUMBNAIL_WIDTH:=120} | tr -d \"`
-export THUMBNAIL_HEIGHT=`${THUMBNAIL_HEIGHT:=100} | tr -d \"`
-export PREVIEW_WIDTH=`${PREVIEW_WIDTH:=1024} | tr -d \"`
-export PREVIEW_HEIGHT=`${PREVIEW_HEIGHT:=0} | tr -d \"`
-export PROFILE_WIDTH=`${PROFILE_WIDTH:=128} | tr -d \"`
-export PROFILE_HEIGHT=`${PROFILE_HEIGHT:=128} | tr -d \"`
-export FILE_SETTINGS__AMAZON_S3_LOCATION_CONSTRAINT=`${FILE_SETTINGS__AMAZON_S3_LOCATION_CONSTRAINT:=false} | tr -d \"`
-export FILE_SETTINGS__LOWERCASE_BUCKET=`${FILE_SETTINGS__LOWERCASE_BUCKET:=false} | tr -d \"`
+export MAX_FILE_SIZE=`echo ${MAX_FILE_SIZE:=52428800} | tr -d \"`
+export ENABLE_PUBLIC_LINK=`echo ${ENABLE_PUBLIC_LINK:=false} | tr -d \"`
+export THUMBNAIL_WIDTH=`echo ${THUMBNAIL_WIDTH:=120} | tr -d \"`
+export THUMBNAIL_HEIGHT=`echo ${THUMBNAIL_HEIGHT:=100} | tr -d \"`
+export PREVIEW_WIDTH=`echo ${PREVIEW_WIDTH:=1024} | tr -d \"`
+export PREVIEW_HEIGHT=`echo ${PREVIEW_HEIGHT:=0} | tr -d \"`
+export PROFILE_WIDTH=`echo ${PROFILE_WIDTH:=128} | tr -d \"`
+export PROFILE_HEIGHT=`echo ${PROFILE_HEIGHT:=128} | tr -d \"`
+export FILE_SETTINGS__AMAZON_S3_LOCATION_CONSTRAINT=`echo ${FILE_SETTINGS__AMAZON_S3_LOCATION_CONSTRAINT:=false} | tr -d \"`
+export FILE_SETTINGS__LOWERCASE_BUCKET=`echo ${FILE_SETTINGS__LOWERCASE_BUCKET:=false} | tr -d \"`
 
 ##################
 # Email Settings #
