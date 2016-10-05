@@ -22,7 +22,7 @@ export ENABLE_DEVELOPER=`echo ${ENABLE_DEVELOPER:=false} | tr -d \"`
 export ENABLE_SECURITY_FIX_ALERT=`echo ${ENABLE_SECURITY_FIX_ALERT:=true} | tr -d \"`
 export ENABLE_INSECURE_OUTGOING_CONNECTIONS=`echo ${ENABLE_INSECURE_OUTGOING_CONNECTIONS:=false} | tr -d \"`
 export ENABLE_2FA=`echo ${ENABLE_2FA:=false} | tr -d \"`
-export EnableCustomEmoji=`echo ${ENABLE_CUSTOM_EMOJI:=false} | tr -d \"`
+export ENABLE_CUSTOM_EMOJI=`echo ${ENABLE_CUSTOM_EMOJI:=false} | tr -d \"`
 
 export SESSION_LENGTH_WEB_IN_DAYS=`echo ${SESSION_LENGTH_WEB_IN_DAYS:=30} | tr -d \"`
 export SESSION_LENGTH_MOBILE_IN_DAYS=`echo ${SESSION_LENGTH_MOBILE_IN_DAYS:=30} | tr -d \"`
