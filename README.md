@@ -7,20 +7,18 @@ It must used in tandem with [This customized Nginx Buildpack](https://github.com
 
 Mattermost is not a [12 factor compatible app](http://12factor.net/config), so the startup script writes your Heroku environment variables to a config file when the dyno starts.
 
-### Known to work with Mattermost 3.4.0 Team and Enterprise editions
-
-## 
+### Known to work with Mattermost 3.5.1 Team and Enterprise editions
 
 ## Configuration options
 
 ### Buildpack Specific Variables
 
-Set `MATTERMOST_VERSION` to the release version you'd like to install. i.e. '3.4.0'
+Set `MATTERMOST_VERSION` to the release version you'd like to install. i.e. '3.5.1'
 Set `MATTERMOST_TYPE` to either 'team' or 'enterprise'
 
 ### Mattermost Configuration
 
-Mattermost-Heroku supports every config option that Mattermost 3.4 defines. You can see the mapping between Mattermost config settings and Heroku environment variables in the [configuration template](/config/config-heroku-template.json).
+Mattermost-Heroku supports most configuration options that Mattermost 3.5.1 offers. You can see the mapping between Mattermost config settings and Heroku environment variables in the [configuration template](/config/config-heroku-template.json).
 
  [Check out the Mattermost configuration documentation for detailed information about each option.](https://docs.mattermost.com/administration/config-settings.html)
 

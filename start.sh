@@ -100,6 +100,7 @@ export VARY_BY_REMOTE_ADDR=`echo ${VARY_BY_REMOTE_ADDR:=false} | tr -d \"`
 export ENABLE_RATE_LIMITER=`echo ${ENABLE_RATE_LIMITER:=true} | tr -d \"`
 export RATE_PER_SEC=`echo ${RATE_PER_SEC:=10} | tr -d \"`
 export RATELIMIT_MEM_STORE_SIZE=`echo ${RATELIMIT_MEM_STORE_SIZE:=10000} | tr -d \"`
+export MAX_BURST=`echo ${MAX_BURST:=100} | tr -d \"`
 
 ####################
 # Privacy Settings #
@@ -145,6 +146,11 @@ export ENABLE_DAILY_COMPLIANCE=`echo ${ENABLE_DAILY_COMPLIANCE:=false} | tr -d \
 ####################
 export ENABLE_CLUSTER=`echo ${ENABLE_CLUSTER:=false} | tr -d \"`
 export CLUSTER_INTER_NODE_URLS=`echo ${CLUSTER_INTER_NODE_URLS:1:${#CLUSTER_INTER_NODE_URLS}-2}`
+
+####################
+# Web RTC Settings #
+####################
+export ENABLE_WEB_RTC=`echo ${ENABLE_WEB_RTC:=false} | tr -d \"`
 
 ########################################################################
 # Write Config variables in envrionment to the configuration JSON file #

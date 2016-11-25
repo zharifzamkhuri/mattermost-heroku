@@ -112,6 +112,7 @@
     "RateLimitSettings": {
         "EnableRateLimiter": ${ENABLE_RATE_LIMITER},
         "PerSec": ${RATE_PER_SEC},
+        "MaxBurst": ${MAX_BURST},
         "MemoryStoreSize": ${RATELIMIT_MEM_STORE_SIZE},
         "VaryByRemoteAddr": ${VARY_BY_REMOTE_ADDR},
         "VaryByHeader": "${VARY_BY_HEADER}"
@@ -220,5 +221,15 @@
         "Enable": ${ENABLE_CLUSTER},
         "InterNodeListenAddress": ":${CLUSTER_INTER_NODE_LISTEN_ADDRESS}",
         "InterNodeUrls": [${CLUSTER_INTER_NODE_URLS}]
+    },
+    "WebrtcSettings": {
+        "Enable": ${ENABLE_WEB_RTC},
+        "GatewayWebsocketUrl": "${GATEWAY_SOCKET_URL}",
+        "GatewayAdminUrl": "${GATEWAY_ADMIN_URL}",
+        "GatewayAdminSecret": "${GATEWAY_ADMIN_SECRET}",
+        "StunURI": "${STUN_URL}",
+        "TurnURI": "${TURN_URI}",
+        "TurnUsername": "${TURN_USERNAME}",
+        "TurnSharedKey": "${TURN_SHARED_KEY}"
     }
 }
