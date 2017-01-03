@@ -65,7 +65,7 @@ export ENABLE_DIAGNOSTICS=`echo ${ENABLE_DIAGNOSTICS:=true} | tr -d \"`
 # File Settings #
 #################
 export FILE_SETTINGS__PUBLIC_LINK_SALT=$(printf "${FILE_SETTINGS__PUBLIC_LINK_SALT}%.0s" {1..32} | cut -c -32)
-export INITIAL_FONT=`echo ${INITIAL_FONT:="luximbi.ttf"}
+export INITIAL_FONT=`echo ${INITIAL_FONT:="luximbi.ttf"}`
 
 export MAX_FILE_SIZE=`echo ${MAX_FILE_SIZE:=52428800} | tr -d \"`
 export ENABLE_PUBLIC_LINK=`echo ${ENABLE_PUBLIC_LINK:=false} | tr -d \"`
