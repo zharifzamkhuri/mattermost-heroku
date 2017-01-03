@@ -84,7 +84,8 @@
         "AmazonS3Endpoint": "${FILE_SETTINGS__AMAZON_S3_ENDPOINT}",
         "AmazonS3BucketEndpoint": "${FILE_SETTINGS__BUCKET_ENDPOINT}",
         "AmazonS3LocationConstraint": ${FILE_SETTINGS__AMAZON_S3_LOCATION_CONSTRAINT},
-        "AmazonS3LowercaseBucket": ${FILE_SETTINGS__LOWERCASE_BUCKET}
+        "AmazonS3LowercaseBucket": ${FILE_SETTINGS__LOWERCASE_BUCKET},
+        "InitialFont": "${INITIAL_FONT}"
     },
     "EmailSettings": {
         "EnableSignUpWithEmail": ${ENABLE_SIGNUP_WITH_EMAIL},

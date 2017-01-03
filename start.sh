@@ -65,6 +65,7 @@ export ENABLE_DIAGNOSTICS=`echo ${ENABLE_DIAGNOSTICS:=true} | tr -d \"`
 # File Settings #
 #################
 export FILE_SETTINGS__PUBLIC_LINK_SALT=$(printf "${FILE_SETTINGS__PUBLIC_LINK_SALT}%.0s" {1..32} | cut -c -32)
+export INITIAL_FONT=`echo ${INITIAL_FONT:="luximbi.ttf"}
 
 export MAX_FILE_SIZE=`echo ${MAX_FILE_SIZE:=52428800} | tr -d \"`
 export ENABLE_PUBLIC_LINK=`echo ${ENABLE_PUBLIC_LINK:=false} | tr -d \"`
@@ -89,9 +90,9 @@ export ENABLE_SIGNIN_WITH_USERNAME=`echo ${ENABLE_SIGNIN_WITH_USERNAME:=true} | 
 export SEND_EMAIL_NOTIFICATIONS=`echo ${SEND_EMAIL_NOTIFICATIONS:=false} | tr -d \"`
 export REQUIRE_EMAIL_VERIFICATION=`echo ${REQUIRE_EMAIL_VERIFICATION:=false} | tr -d \"`
 export SEND_PUSH_NOTIFICATIONS=`echo ${SEND_PUSH_NOTIFICATIONS:=false} | tr -d \"`
-export ENABLE_EMAIL_BATCHING=`echo ${ENABLE_EMAIL_BATCHING:=false} | tr -d \"` 
-export EMAIL_BATCHING_BUFFER_SIZE=`echo ${EMAIL_BATCHING_BUFFER_SIZE:=256} | tr -d \"` 
-export EMAIL_BATCHING_INTERVAL=`echo ${EMAIL_BATCHING_INTERVAL:=30} | tr -d \"` 
+export ENABLE_EMAIL_BATCHING=`echo ${ENABLE_EMAIL_BATCHING:=false} | tr -d \"`
+export EMAIL_BATCHING_BUFFER_SIZE=`echo ${EMAIL_BATCHING_BUFFER_SIZE:=256} | tr -d \"`
+export EMAIL_BATCHING_INTERVAL=`echo ${EMAIL_BATCHING_INTERVAL:=30} | tr -d \"`
 
 #######################
 # Rate Limit Settings #
