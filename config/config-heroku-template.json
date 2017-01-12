@@ -49,7 +49,7 @@
         "RestrictPrivateChannelCreation": "${RESTRICT_PRIVATE_CHANNEL_CREATION}",
         "RestrictPublicChannelDeletion": "${RESTRICT_PUBLIC_CHANNEL_DELETION}",
         "RestrictPrivateChannelDeletion": "${RESTRICT_PRIVATE_CHANNEL_DELETION}",
-        "MaxNotificationsPerChannel": "${MAX_NOTIFICATIONS_PER_CHANNEL}"
+        "MaxNotificationsPerChannel": ${MAX_NOTIFICATIONS_PER_CHANNEL}
     },
     "SqlSettings": {
         "DriverName": "${DRIVER_NAME}",
