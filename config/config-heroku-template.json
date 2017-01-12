@@ -26,7 +26,8 @@
         "WebsocketPort": ${WEBSOCKET_PORT},
         "WebserverMode": "${WEBSERVER_MODE}",
         "EnableCustomEmoji": ${ENABLE_CUSTOM_EMOJI},
-        "RestrictCustomEmojiCreation": "${RESTRICT_CUSTOM_EMOJI_CREATION}"
+        "RestrictCustomEmojiCreation": "${RESTRICT_CUSTOM_EMOJI_CREATION}",
+        "EnforceMultifactorAuthentication": ${ENFORCE_MULTIFACTOR_AUTHENTICATION}
     },
     "TeamSettings": {
         "SiteName": "${TEAM_SETTINGS__SITE_NAME}",
@@ -43,7 +44,12 @@
         "RestrictTeamInvite": "${RESTRICT_TEAM_INVITE}",
         "RestrictPublicChannelManagement": "${RESTRICT_PUBLIC_CHANNEL_MANAGEMENT}",
         "RestrictPrivateChannelManagement": "${RESTRICT_PRIVATE_CHANNEL_MANAGEMENT}",
-        "UserStatusAwayTimeout": ${USER_STATUS_AWAY_TIMEOUT}
+        "UserStatusAwayTimeout": ${USER_STATUS_AWAY_TIMEOUT},
+        "RestrictPublicChannelCreation": "${RESTRICT_PUBLIC_CHANNEL_CREATION}",
+        "RestrictPrivateChannelCreation": "${RESTRICT_PRIVATE_CHANNEL_CREATION}",
+        "RestrictPublicChannelDeletion": "${RESTRICT_PUBLIC_CHANNEL_DELETION}",
+        "RestrictPrivateChannelDeletion": "${RESTRICT_PRIVATE_CHANNEL_DELETION}",
+        "MaxNotificationsPerChannel": "${MAX_NOTIFICATIONS_PER_CHANNEL}"
     },
     "SqlSettings": {
         "DriverName": "${DRIVER_NAME}",
@@ -183,7 +189,8 @@
         "SkipCertificateVerification": ${LDAP_SKIP_CERT_VERIFICATION},
         "QueryTimeout": ${LDAP_QUERY_TIMEOUT},
         "MaxPageSize": ${LDAP_MAX_PAGE_SIZE},
-        "LoginFieldName": "${LDAP_LOGIN_FIELDNAME}"
+        "LoginFieldName": "${LDAP_LOGIN_FIELDNAME}",
+        "PositionAttribute": "${LDAP_POSITION_ATTRIBUTE}"
     },
     "ComplianceSettings": {
         "Enable": ${ENABLE_COMPLIANCE},
@@ -211,7 +218,8 @@
         "UsernameAttribute": "${SAML_USERNAME_ATTRIBUTE}",
         "NicknameAttribute": "${SAML_NICKNAME_ATTRIBUTE}",
         "LocaleAttribute": "${SAML_LOCALE_ATTRIBUTE}",
-        "LoginButtonText": "${SAML_LOGIN_BUTTON_TEXT}"
+        "LoginButtonText": "${SAML_LOGIN_BUTTON_TEXT}",
+        "PositionAttribute": "${SAML_POSITION_ATTRIBUTE}"
     },
     "NativeAppSettings": {
         "AppDownloadLink": "${DESKTOP_APP_DOWNLOAD_LINK}",
@@ -232,5 +240,13 @@
         "TurnURI": "${TURN_URI}",
         "TurnUsername": "${TURN_USERNAME}",
         "TurnSharedKey": "${TURN_SHARED_KEY}"
+    },
+    "MetricsSettings": {
+        "Enable": ${ENABLE_METRICS},
+        "BlockProfileRate": ${BLOCK_PROFILE_RATE},
+        "ListenAddress": "${METRICS_LISTEN_ADDRESS}"
+    },
+    "AnalyticsSettings": {
+        "MaxUsersForStatistics": ${MAX_USERS_FOR_STATISTICS}
     }
 }

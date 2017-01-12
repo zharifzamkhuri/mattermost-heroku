@@ -23,6 +23,7 @@ export ENABLE_SECURITY_FIX_ALERT=`echo ${ENABLE_SECURITY_FIX_ALERT:=true} | tr -
 export ENABLE_INSECURE_OUTGOING_CONNECTIONS=`echo ${ENABLE_INSECURE_OUTGOING_CONNECTIONS:=false} | tr -d \"`
 export ENABLE_2FA=`echo ${ENABLE_2FA:=false} | tr -d \"`
 export ENABLE_CUSTOM_EMOJI=`echo ${ENABLE_CUSTOM_EMOJI:=false} | tr -d \"`
+export ENFORCE_MULTIFACTOR_AUTHENTICATION=`echo ${ENFORCE_MULTIFACTOR_AUTHENTICATION:=false} | tr -d \"`
 
 export SESSION_LENGTH_WEB_IN_DAYS=`echo ${SESSION_LENGTH_WEB_IN_DAYS:=30} | tr -d \"`
 export SESSION_LENGTH_MOBILE_IN_DAYS=`echo ${SESSION_LENGTH_MOBILE_IN_DAYS:=30} | tr -d \"`
@@ -43,6 +44,11 @@ export MAX_USERS_PER_TEAM=`echo ${MAX_USERS_PER_TEAM:=50} | tr -d \"`
 export RESTRICT_TEAM_NAMES=`echo ${RESTRICT_TEAM_NAMES:=true} | tr -d \"`
 export USER_STATUS_AWAY_TIMEOUT=`echo ${USER_STATUS_AWAY_TIMEOUT:=300} | tr -d \"`
 export RESTRICT_DIRECT_MESSAGE=`echo ${RESTRICT_DIRECT_MESSAGE:="any"}`
+export RESTRICT_PUBLIC_CHANNEL_CREATION=`echo ${RESTRICT_PUBLIC_CHANNEL_CREATION:="all"}`
+export RESTRICT_PRIVATE_CHANNEL_CREATION=`echo ${RESTRICT_PRIVATE_CHANNEL_CREATION:="all"}`
+export RESTRICT_PUBLIC_CHANNEL_DELETION=`echo ${RESTRICT_PUBLIC_CHANNEL_DELETION:="all"}`
+export RESTRICT_PRIVATE_CHANNEL_DELETION=`echo ${RESTRICT_PRIVATE_CHANNEL_DELETION:="all"}`
+export MAX_NOTIFICATIONS_PER_CHANNEL=`echo ${MAX_NOTIFICATIONS_PER_CHANNEL:=1000}`
 
 ################
 # SQL Settings #
@@ -132,6 +138,7 @@ export LDAP_SKIP_CERT_VERIFICATION=`echo ${LDAP_SKIP_CERT_VERIFICATION:=false} |
 export LDAP_QUERY_TIMEOUT=`echo ${LDAP_QUERY_TIMEOUT:=60} | tr -d \"`
 export LDAP_MAX_PAGE_SIZE=`echo ${LDAP_MAX_PAGE_SIZE:=0} | tr -d \"`
 
+
 export ENABLE_SAML=`echo ${ENABLE_SAML:=false} | tr -d \"`
 export ENABLE_SAML_VERIFY=`echo ${ENABLE_SAML_VERIFY:=false} | tr -d \"`
 export ENABLE_SAML_ENCRYPT=`echo ${ENABLE_SAML_ENCRYPT:=false} | tr -d \"`
@@ -152,6 +159,17 @@ export CLUSTER_INTER_NODE_URLS=`echo ${CLUSTER_INTER_NODE_URLS:1:${#CLUSTER_INTE
 # Web RTC Settings #
 ####################
 export ENABLE_WEB_RTC=`echo ${ENABLE_WEB_RTC:=false} | tr -d \"`
+
+####################
+# Metrics Settings #
+####################
+export ENABLE_METRICS=`echo ${ENABLE_METRICS:=false} | tr -d \"`
+export BLOCK_PROFILE_RATE=`echo ${BLOCK_PROFILE_RATE:=0} | tr -d \"`
+
+######################
+# Analytics Settings #
+######################
+export MAX_USERS_FOR_STATISTICS=`echo ${MAX_USERS_FOR_STATISTICS:=false} | tr -d \"`
 
 ########################################################################
 # Write Config variables in envrionment to the configuration JSON file #
@@ -174,7 +192,7 @@ trap _term SIGTERM
 ####################
 # Start Mattermost #
 ####################
-bin/platform -config=/app/config/config-heroku.json &
+bin/platform --config=/app/config/config-heroku.json &
 
 PID=$!
 
