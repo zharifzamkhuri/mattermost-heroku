@@ -169,7 +169,7 @@ export BLOCK_PROFILE_RATE=`echo ${BLOCK_PROFILE_RATE:=0} | tr -d \"`
 ######################
 # Analytics Settings #
 ######################
-export MAX_USERS_FOR_STATISTICS=`echo ${MAX_USERS_FOR_STATISTICS:=false} | tr -d \"`
+export MAX_USERS_FOR_STATISTICS=`echo ${MAX_USERS_FOR_STATISTICS:=2500} | tr -d \"`
 
 ########################################################################
 # Write Config variables in envrionment to the configuration JSON file #
