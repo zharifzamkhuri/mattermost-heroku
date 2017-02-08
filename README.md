@@ -13,12 +13,12 @@ Mattermost is not a [12 factor compatible app](http://12factor.net/config), so t
 
 ### Buildpack Specific Variables
 
-Set `MATTERMOST_VERSION` to the release version you'd like to install. i.e. '3.6.0'
+Set `MATTERMOST_VERSION` to the release version you'd like to install. i.e. '3.6.2'
 Set `MATTERMOST_TYPE` to either 'team' or 'enterprise'
 
 ### Mattermost Configuration
 
-Mattermost-Heroku supports most configuration options that Mattermost 3.6.0 offers. You can see the mapping between Mattermost config settings and Heroku environment variables in the [configuration template](/config/config-heroku-template.json).
+Mattermost-Heroku supports most configuration options that Mattermost 3.6.2 offers. You can see the mapping between Mattermost config settings and Heroku environment variables in the [configuration template](/config/config-heroku-template.json).
 
  [Check out the Mattermost configuration documentation for detailed information about each option.](https://docs.mattermost.com/administration/config-settings.html)
 
