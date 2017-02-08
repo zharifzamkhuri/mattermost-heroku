@@ -24,7 +24,24 @@ Mattermost-Heroku supports most configuration options that Mattermost 3.6.2 offe
 
 ## Rebuilding
 
-Use the deploy menu on the Heroku dashboard to trigger manual deploys.
+If you maintain a fork of this repo, you can link the Heroku app to your fork, which will enable you to build from the Heroku dashboard's deploy page.
+
+An alternative to this would be to use the [Heroku Build API to create a new build](https://devcenter.heroku.com/articles/build-and-release-using-the-api#creating-builds)
+
+For example, a curl request like this would do the trick (substitute the right variables):
+
+```bash
+curl -n -X POST https://api.heroku.com/apps/$YOUR_APP/builds \
+-d '{"source_blob": {"url":"https://github.com/mozilla/mattermost-heroku/archive/{$LATEST_BUILDPACK_VERSION}.tar.gz", "version": "${COMMIT_HASH}"}}' \
+-H 'Accept: application/vnd.heroku+json; version=3' \
+-H "Content-Type: application/json"
+```
+
+The "version" parameter is optional in the example above.
+
+This curl request can be made manually from a developer's machine, or it can be set up as a job in something like Jenkins. Keep in mind that Authorization headers will need to be included in the request. 
+
+Also, the example above assumes that the machine it's being run on has heroku.com credentials saved in your `~/.netrc` file.
 
 ## Warnings
 
