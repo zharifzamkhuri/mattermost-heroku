@@ -3,7 +3,6 @@
         "SiteURL": "${SITE_URL}",
         "ListenAddress": ":${MATTERMOST_PORT}",
         "MaximumLoginAttempts": ${MAXIMUM_LOGIN_ATTEMPTS},
-        "SegmentDeveloperKey": "${SEGMENT_DEVELOPER_KEY}",
         "GoogleDeveloperKey": "${GOOGLE_DEVELOPER_KEY}",
         "EnableOAuthServiceProvider": ${ENABLE_OAUTH_SERVICE_PROVIDER},
         "EnableIncomingWebhooks": ${ENABLE_INCOMING_WEBHOOKS},
@@ -27,7 +26,14 @@
         "WebserverMode": "${WEBSERVER_MODE}",
         "EnableCustomEmoji": ${ENABLE_CUSTOM_EMOJI},
         "RestrictCustomEmojiCreation": "${RESTRICT_CUSTOM_EMOJI_CREATION}",
-        "EnforceMultifactorAuthentication": ${ENFORCE_MULTIFACTOR_AUTHENTICATION}
+        "EnforceMultifactorAuthentication": ${ENFORCE_MULTIFACTOR_AUTHENTICATION},
+        "TimeBetweenUserTypingUpdatesMilliseconds": ${TIME_BETWEEN_USER_TYPING_UPDATES_MILLISECONDS},
+        "EnableUserTypingMessages": ${ENABLE_USER_TYPING_MESSAGES},
+        "EnableLinkPreviews": ${ENABLE_LINK_PREVIEWS},
+        "RestrictPostDelete": "${RESTRICT_POST_DELETE}",
+        "PostEditTimeLimit": ${POST_EDIT_TIME_LIMIT},
+        "AllowEditPost": "${ALLOW_EDIT_POST}",
+        "ClusterLogTimeoutMilliseconds": ${CLUSTER_LOG_TIMEOUT_MILLISECONDS}
     },
     "TeamSettings": {
         "SiteName": "${TEAM_SETTINGS__SITE_NAME}",
