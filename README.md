@@ -7,13 +7,13 @@ It must used in tandem with [This customized Nginx Buildpack](https://github.com
 
 Mattermost is not a [12 factor compatible app](http://12factor.net/config), so the startup script writes your Heroku environment variables to a config file when the dyno starts.
 
-### Known to work with Mattermost 3.6.0 Team and Enterprise editions
+### Known to work with Mattermost 3.7.3 Team and Enterprise editions
 
 ## Configuration options
 
 ### Buildpack Specific Variables
 
-Set `MATTERMOST_VERSION` to the release version you'd like to install. i.e. '3.6.2'
+Set `MATTERMOST_VERSION` to the release version you'd like to install. i.e. '3.7.3'
 Set `MATTERMOST_TYPE` to either 'team' or 'enterprise'
 
 ### Mattermost Configuration
