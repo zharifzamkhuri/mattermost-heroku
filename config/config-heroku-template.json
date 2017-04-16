@@ -120,7 +120,8 @@
         "PushNotificationContents": "${PUSH_NOTIFICATION_CONTENTS}",
         "EnableEmailBatching": ${ENABLE_EMAIL_BATCHING},
         "EmailBatchingBufferSize": ${EMAIL_BATCHING_BUFFER_SIZE},
-        "EmailBatchingInterval": ${EMAIL_BATCHING_INTERVAL}
+        "EmailBatchingInterval": ${EMAIL_BATCHING_INTERVAL},
+        "SkipServerCertificateVerification": ${SKIP_SERVER_CERTIFICATE_VERIFICATION}
     },
     "RateLimitSettings": {
         "EnableRateLimiter": ${ENABLE_RATE_LIMITER},
