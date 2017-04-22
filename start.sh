@@ -1,3 +1,4 @@
+
 ###################################
 # Pass SIGTERM to mattermost proc #
 ###################################
@@ -13,7 +14,7 @@ trap _term SIGTERM
 ####################
 # Start Mattermost #
 ####################
-bin/platform --config=config-heroku.json &
+bin/platform --config=/app/config-heroku.json &
 
 PID=$!
 
