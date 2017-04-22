@@ -14,7 +14,7 @@ trap _term SIGTERM
 ####################
 # Start Mattermost #
 ####################
-bin/platform --config=/app/config-heroku.json &
+bin/platform --config=/app/default-config.json &
 
 PID=$!
 
