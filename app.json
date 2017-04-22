@@ -1,133 +1,140 @@
 {
-  "name": "Mattermost Heroku",
-  "description": "Deploy Mattermost to Heroku",
-  "repository": "https://github.com/mozilla/mattermost-heroku",
-  "keywords": ["mattermost", "nginx"],
-  "success_url": "/",
-  "buildpacks": [
-    {
-      "url": "https://github.com/cadecairos/nginx-buildpack.git#v1.0.0"
-    },
-    {
-      "url": "http://github.com/mozilla/mattermost-heroku.git#v1.3.0"
-    }
-  ],
-  "env": {
-    "MATTERMOST_VERSION": {
-        "value": "3.8.0",
-        "description": "Mattermost version to install, semver format"
-    },
-    "MATTERMOST_TYPE": {
-        "value": "team",
-        "description": "team or enterprise Mattermost"
-    },
-    "MATTERMOST_PORT": {
-        "value": "8080",
-        "description": "The port you want Nginx and Mattermost to talk to each other on - Don't change this unless you change the Nginx buildpack too.",
-        "required": true
-    },
-    "TEAM_SETTINGS__SITE_NAME": "Mattermost",
-    "SQL_SETTINGS__AT_REST_ENCRYPT_KEY": {
+    "name": "Mattermost Heroku",
+    "description": "Deploy Mattermost to Heroku",
+    "repository": "https://github.com/mozilla/mattermost-heroku",
+    "keywords": [
+        "mattermost",
+        "nginx"
+    ],
+    "success_url": "/",
+    "buildpacks": [
+        {
+            "url": "https://github.com/cadecairos/nginx-buildpack.git#v1.0.0"
+        },
+        {
+            "url": "http://github.com/mozilla/mattermost-heroku.git#v1.3.0"
+        }
+    ],
+    "env": {
+        "MATTERMOST_VERSION": {
+            "value": "3.8.1",
+            "description": "Mattermost version to install, semver format"
+        },
+        "MATTERMOST_TYPE": {
+            "value": "team",
+            "description": "team or enterprise Mattermost"
+        },
+        "MM_SQLSETTINGS_DATASOURCE": {
+            "value": "REPLACE ME MANUALLY",
+            "description": "Mattermost and Heroku Postgres don't play nicely together. you will have to copy the DATABASE_URL variable into this one, and make sure you update it if it changes"
+        },
+        "MM_SERVICESETTINGS_LISTENADDRESS": {
+            "value": ":8080",
+            "description": "The port you want Nginx and Mattermost to talk to each other on - Don't change this unless you change the Nginx buildpack too.",
+            "required": true
+        },
+        "MM_TEAMSETTINGS_SITENAME": "Mattermost",
+        "MM_SQLSETTINGS_ATRESTENCRYPTKEY": {
             "description": "SqlSettings AtRestEncryptKey",
             "generator": "secret"
-    },
-    "FILE_SETTINGS__PUBLIC_LINK_SALT": {
+        },
+        "MM_FILESETTINGS_PUBLICLINKSALT": {
             "description": "FileSettings PublicLinkSalt",
             "generator": "secret"
-    },
-    "FILE_SETTINGS__DRIVER_NAME": {
-        "description": "FileSettings DriverName - local or amazons3. WARNING: If this isn't amazons3 uploads will disapear at regular intervales as dynos cycle.",
-        "value": "local"
-    },
-    "FILE_SETTINGS__AMAZON_S3_ACCESS_KEY_ID": {
-        "description": "FileSettings AmazonS3AccessKeyId - WARNING: If this isn't an amazon s3 key uploads will disapear at regular intervales as dynos cycle.",
-        "required": false,
-        "value": ""
-    },
-    "FILE_SETTINGS__AMAZON_S3_SECRET_ACCESS_KEY": {
-        "description": "FileSettings AmazonS3SecretAccessKey - WARNING: If this isn't an amazon s3 secret uploads will disapear at regular intervales as dynos cycle.",
-        "required": false,
-        "value": ""
-    },
-    "FILE_SETTINGS__AMAZON_S3_BUCKET": {
-        "description": "FileSettings AmazonS3Bucket - WARNING: If this isn't an amazon s3 bucket uploads will disapear at regular intervales as dynos cycle.",
-        "required": false,
-        "value": ""
-    },
-    "FILE_SETTINGS__AMAZON_S3_REGION": {
-        "description": "FileSettings AmazonS3Region",
-        "value": "us-east-1"
-    },
-    "EMAIL_SETTINGS__INVITE_SALT": {
+        },
+        "MM_FILESETTINGS_DRIVERNAME": {
+            "description": "FileSettings DriverName - local or amazons3. WARNING: If this isn't amazons3 uploads will disapear at regular intervales as dynos cycle.",
+            "value": "local"
+        },
+        "MM_FILESETTINGS_AMAZONS3ACCESSKEYID": {
+            "description": "FileSettings AmazonS3AccessKeyId - WARNING: If this isn't an amazon s3 key uploads will disapear at regular intervales as dynos cycle.",
+            "required": false,
+            "value": ""
+        },
+        "MM_FILESETTINGS_AMAZONS3SECRETACCESSKEY": {
+            "description": "FileSettings AmazonS3SecretAccessKey - WARNING: If this isn't an amazon s3 secret uploads will disapear at regular intervales as dynos cycle.",
+            "required": false,
+            "value": ""
+        },
+        "MM_FILESETTINGS_AMAZONS3BUCKET": {
+            "description": "FileSettings AmazonS3Bucket - WARNING: If this isn't an amazon s3 bucket uploads will disapear at regular intervales as dynos cycle.",
+            "required": false,
+            "value": ""
+        },
+        "MM_FILESETTINGS_AMAZONS3REGION": {
+            "description": "FileSettings AmazonS3Region",
+            "value": "us-east-1"
+        },
+        "MM_EMAILSETTINGS_INVITESALT": {
             "description": "EmailSettings InviteSalt",
             "generator": "secret"
-    },
-    "EMAIL_SETTINGS__PASSWORD_RESET_SALT": {
+        },
+        "MM_EMAILSETTINGS_PASSWORDRESETSALT": {
             "description": "EmailSettings PasswordResetSalt",
             "generator": "secret"
-    },
-    "LOG_LEVEL": {
-        "description": "Console logging level",
-        "value": "DEBUG"
-    },
-    "ENABLE_SIGNUP_WITH_EMAIL": {
+        },
+        "MM_LOGSETTINGS_CONSOLELEVEL": {
+            "description": "Console logging level",
+            "value": "DEBUG"
+        },
+        "MM_EMAILSETTINGS_ENABLESIGNUPWITHEMAIL": {
             "description": "",
             "value": "true"
-    },
-    "SEND_EMAIL_NOTIFICATIONS": {
+        },
+        "MM_EMAILSETTINGS_SENDEMAILNOTIFICATIONS": {
             "description": "",
             "value": "false"
-    },
-    "REQUIRE_EMAIL_VERIFICATION": {
+        },
+        "MM_EMAILSETTINGS_REQUIREEMAILVERIFICATION": {
             "description": "",
             "value": "false"
-    },
-    "MAX_USERS_PER_TEAM": {
-        "description": "",
-        "value": "50"
-    },
-    "ENABLE_TEAM_CREATION": {
+        },
+        "MM_TEAMSETTINGS_MAXUSERSPERTEAM": {
+            "description": "",
+            "value": "50"
+        },
+        "MM_TEAMSETTINGS_ENABLETEAMCREATION": {
             "description": "",
             "value": "false"
-    },
-    "ENABLE_USER_CREATION": {
+        },
+        "MM_TEAMSETTINGS_ENABLEUSERCREATION": {
             "description": "",
             "value": "false"
-    },
-    "SMTP_USERNAME": {
+        },
+        "MM_EMAILSETTINGS_SMTPUSERNAME": {
             "description": "",
             "value": "",
             "required": false
-    },
-    "SMTP_PASSWORD": {
+        },
+        "MM_EMAILSETTINGS_SMTPPASSWORD": {
             "description": "",
             "value": "",
             "required": false
-    },
-    "SMTP_SERVER": {
+        },
+        "MM_EMAILSETTINGS_SMTPSERVER": {
             "description": "",
             "value": "",
             "required": false
-    },
-    "SMTP_PORT": {
+        },
+        "MM_EMAILSETTINGS_SMTPPORT": {
             "description": "",
             "value": "",
             "required": false
-    },
-    "CONNECTION_SECURITY": {
+        },
+        "MM_EMAILSETTINGS_CONNECTIONSECURITY": {
             "description": "",
             "value": "",
             "required": false
-    },
-    "MAX_IDLE_CONNS": {
+        },
+        "MM_SQLSETTINGS_MAXIDLECONNS": {
             "value": "10",
             "description": "Maximum number of idle connections held open to the database",
             "required": true
-    },
-    "MAX_OPEN_CONNS": {
+        },
+        "MM_SQLSETTINGS_MAXOPENCONNS": {
             "value": "10",
             "description": "Maximum number of open connections held open to the database",
             "required": true
+        }
     }
-  }
 }
