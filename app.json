@@ -24,8 +24,12 @@
             "value": "team",
             "description": "team or enterprise Mattermost"
         },
+        "MM_SQLSETTINGS_DRIVERNAME": {
+            "value": "postgres",
+            "description": "Database driver"
+        },
         "MM_SQLSETTINGS_DATASOURCE": {
-            "value": "REPLACE ME MANUALLY",
+            "value": "************ REPLACE THIS MANUALLY ************",
             "description": "Mattermost and Heroku Postgres don't play nicely together. you will have to copy the DATABASE_URL variable into this one, and make sure you update it if it changes"
         },
         "MM_SERVICESETTINGS_LISTENADDRESS": {
