@@ -6,13 +6,13 @@ This buildpack is an [inline buildpack](https://github.com/kr/heroku-buildpack-i
 It must be used in tandem with [This customized Nginx Buildpack](https://github.com/cadecairos/nginx-buildpack) that allow mattermost to communicate with Nginx using a TCP port instead of a socket.
 
 
-### Known to work with Mattermost 3.8.2 Team and Enterprise editions
+### Known to work with Mattermost 3.9.0 Team and Enterprise editions
 
 ## Configuration options
 
 ### Buildpack Specific Variables
 
-Set `MATTERMOST_VERSION` to the release version you'd like to install. i.e. '3.8.2'
+Set `MATTERMOST_VERSION` to the release version you'd like to install. i.e. '3.9.0'
 Set `MATTERMOST_TYPE` to either 'team' or 'enterprise'
 
 ### Mattermost Configuration
@@ -36,7 +36,7 @@ curl -n -X POST https://api.heroku.com/apps/$YOUR_APP/builds \
 
 The "version" parameter is optional in the example above.
 
-This curl request can be made manually from a developer's machine, or it can be set up as a job in something like [Jenkins]()https://jenkins.io/. Keep in mind that Authorization headers will need to be included in the request. 
+This curl request can be made manually from a developer's machine, or it can be set up as a job in something like [Jenkins]()https://jenkins.io/. Keep in mind that Authorization headers will need to be included in the request.
 
 Also, the example above assumes that the machine it's being run on has heroku.com credentials saved in your `~/.netrc` file.
 

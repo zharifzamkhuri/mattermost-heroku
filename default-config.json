@@ -43,7 +43,9 @@
         "TimeBetweenUserTypingUpdatesMilliseconds": 5000,
         "EnablePostSearch": true,
         "EnableUserTypingMessages": true,
-        "ClusterLogTimeoutMilliseconds": 2000
+        "ClusterLogTimeoutMilliseconds": 2000,
+        "EnablePostSearch": true,
+        "EnableUserStatuses": true
     },
     "TeamSettings": {
         "SiteName": "Mattermost",
@@ -75,7 +77,8 @@
         "MaxIdleConns": 20,
         "MaxOpenConns": 300,
         "Trace": false,
-        "AtRestEncryptKey": "8s96y35qz5ihiz7w1jcecsqp5xnnkp13"
+        "AtRestEncryptKey": "8s96y35qz5ihiz7w1jcecsqp5xnnkp13",
+        "DataSourceSearchReplicas": []
     },
     "LogSettings": {
         "EnableConsole": true,
@@ -112,7 +115,8 @@
         "AmazonS3Bucket": "",
         "AmazonS3Region": "us-east-1",
         "AmazonS3Endpoint": "s3.amazonaws.com",
-        "AmazonS3SSL": true
+        "AmazonS3SSL": true,
+        "EnableFileAttachments": true
     },
     "EmailSettings": {
         "EnableSignUpWithEmail": true,
@@ -129,7 +133,6 @@
         "SMTPPort": "2500",
         "ConnectionSecurity": "",
         "InviteSalt": "mtt8hrn4tmo5d8nz91jg3z7gr8xudb4z",
-        "PasswordResetSalt": "8j44cnpee8b46a34kpnnc6r8gy6dizts",
         "SendPushNotifications": false,
         "PushNotificationServer": "",
         "PushNotificationContents": "generic",
