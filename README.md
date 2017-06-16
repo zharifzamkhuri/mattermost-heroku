@@ -6,13 +6,13 @@ This buildpack is an [inline buildpack](https://github.com/kr/heroku-buildpack-i
 It must be used in tandem with [This customized Nginx Buildpack](https://github.com/cadecairos/nginx-buildpack) that allow mattermost to communicate with Nginx using a TCP port instead of a socket.
 
 
-### Known to work with Mattermost 3.9.0 Team and Enterprise editions
+### Known to work with Mattermost 3.10.0 Team and Enterprise editions
 
 ## Configuration options
 
 ### Buildpack Specific Variables
 
-Set `MATTERMOST_VERSION` to the release version you'd like to install. i.e. '3.9.0'
+Set `MATTERMOST_VERSION` to the release version you'd like to install. i.e. '3.10.0'
 Set `MATTERMOST_TYPE` to either 'team' or 'enterprise'
 
 ### Mattermost Configuration

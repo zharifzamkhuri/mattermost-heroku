@@ -12,12 +12,12 @@
             "url": "https://github.com/cadecairos/nginx-buildpack.git#v1.0.0"
         },
         {
-            "url": "http://github.com/mozilla/mattermost-heroku.git#v2.0.2"
+            "url": "http://github.com/mozilla/mattermost-heroku.git#v2.1.0"
         }
     ],
     "env": {
         "MATTERMOST_VERSION": {
-            "value": "3.9.0",
+            "value": "3.10.0",
             "description": "Mattermost version to install, semver format"
         },
         "MATTERMOST_TYPE": {

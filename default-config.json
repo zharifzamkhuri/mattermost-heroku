@@ -45,7 +45,8 @@
         "EnableUserTypingMessages": true,
         "ClusterLogTimeoutMilliseconds": 2000,
         "EnablePostSearch": true,
-        "EnableUserStatuses": true
+        "EnableUserStatuses": true,
+        "GoroutineHealthThreshold": -1
     },
     "TeamSettings": {
         "SiteName": "Mattermost",
@@ -78,7 +79,8 @@
         "MaxOpenConns": 300,
         "Trace": false,
         "AtRestEncryptKey": "8s96y35qz5ihiz7w1jcecsqp5xnnkp13",
-        "DataSourceSearchReplicas": []
+        "DataSourceSearchReplicas": [],
+        "QueryTimeout": 30
     },
     "LogSettings": {
         "EnableConsole": true,
@@ -116,7 +118,8 @@
         "AmazonS3Region": "us-east-1",
         "AmazonS3Endpoint": "s3.amazonaws.com",
         "AmazonS3SSL": true,
-        "EnableFileAttachments": true
+        "EnableFileAttachments": true,
+        "AmazonS3SignV2": false
     },
     "EmailSettings": {
         "EnableSignUpWithEmail": true,
@@ -266,5 +269,12 @@
         "TurnURI": "",
         "TurnUsername": "",
         "TurnSharedKey": ""
+    },
+    "AnnoucementSettings": {
+        "EnableBanner": false,
+        "BannerText": "",
+        "BannerColor": "#f2a93b",
+        "BannerTextColor": "#333333",
+        "AllowBannerDismissal": true
     }
 }
