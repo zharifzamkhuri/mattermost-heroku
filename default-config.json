@@ -46,7 +46,11 @@
         "ClusterLogTimeoutMilliseconds": 2000,
         "EnablePostSearch": true,
         "EnableUserStatuses": true,
-        "GoroutineHealthThreshold": -1
+        "GoroutineHealthThreshold": -1,
+        "EnableEmojiPicker": true,
+        "EnableChannelViewedMessages": true,
+        "TeammateNameDisplay": "username",
+        "EnableAPIv3": "true"
     },
     "TeamSettings": {
         "SiteName": "Mattermost",
@@ -105,12 +109,6 @@
         "Directory": "./data/",
         "EnablePublicLink": false,
         "PublicLinkSalt": "1oidkhjpy4p54jwfrgwk7nhkzgwrq6ug",
-        "ThumbnailWidth": 120,
-        "ThumbnailHeight": 100,
-        "PreviewWidth": 1024,
-        "PreviewHeight": 0,
-        "ProfileWidth": 128,
-        "ProfileHeight": 128,
         "InitialFont": "luximbi.ttf",
         "AmazonS3AccessKeyId": "",
         "AmazonS3SecretAccessKey": "",
@@ -249,8 +247,13 @@
     },
     "ClusterSettings": {
         "Enable": false,
-        "InterNodeListenAddress": ":8075",
-        "InterNodeUrls": []
+        "ClusterName": "",
+        "OverrideHostname": "",
+        "UseIpAddress": true,
+        "UseExperimentalGossip": false,
+        "ReadOnlyConfig": true,
+        "GossipPort": 8074,
+        "StreamingPort": 8075,
     },
     "MetricsSettings": {
         "Enable": false,
