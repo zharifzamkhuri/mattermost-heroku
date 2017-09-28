@@ -50,7 +50,9 @@
         "EnableEmojiPicker": true,
         "EnableChannelViewedMessages": true,
         "TeammateNameDisplay": "username",
-        "EnableAPIv3": "true"
+        "EnableAPIv3": "true",
+        "EnableXToLeaveChannelsFromLHS": false,
+        "AllowedUntrustedInternalConnections": ""
     },
     "TeamSettings": {
         "SiteName": "Mattermost",
@@ -73,7 +75,8 @@
         "RestrictPrivateChannelManageMembers": "all",
         "UserStatusAwayTimeout": 300,
         "MaxChannelsPerTeam": 2000,
-        "MaxNotificationsPerChannel": 1000
+        "MaxNotificationsPerChannel": 1000,
+        "ExperimentalTownSquareIsReadOnly": false
     },
     "SqlSettings": {
         "DriverName": "mysql",
@@ -117,7 +120,8 @@
         "AmazonS3Endpoint": "s3.amazonaws.com",
         "AmazonS3SSL": true,
         "EnableFileAttachments": true,
-        "AmazonS3SignV2": false
+        "AmazonS3SignV2": false,
+        "AmazonS3Trace": false
     },
     "EmailSettings": {
         "EnableSignUpWithEmail": true,
@@ -279,5 +283,39 @@
         "BannerColor": "#f2a93b",
         "BannerTextColor": "#333333",
         "AllowBannerDismissal": true
+    },
+    "ThemeSettings": {
+        "EnableThemeSelection": true,
+        "DefaultTheme": "default",
+        "AllowCustomThemes": true,
+        "AllowedThemes": []
+    },
+    "ElasticsearchSettings": {
+        "ConnectionUrl": "",
+        "Username": "",
+        "Password": "",
+        "EnableIndexing": false,
+        "EnableSearching": false,
+        "Sniff": true,
+        "PostIndexReplicas": 1,
+        "PostIndexShards": 1,
+        "AggregatePostsAfterDays": 365,
+        "PostsAggregatorJobStartTime": "03:00",
+        "IndexPrefix": ""
+    },
+    "DataRetentionSettings": {
+        "EnableMessageDeletion": false,
+        "EnableFileDeletion": false,
+        "MessageRetentionDays": 365,
+        "FileRetentionDays": 365,
+        "DeletionJobStartTime": "02:00"
+    },
+    "JobSettings": {
+        "RunJobs": true,
+        "RunScheduler": true
+    },
+    "PluginSettings": {
+        "Enable": false,
+        "Plugins": {}
     }
 }
