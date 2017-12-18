@@ -251,7 +251,7 @@
         "LocaleAttribute": "",
         "PositionAttribute": "",
         "LoginButtonText": "With SAML",
-        "EnableSync: false"
+        "EnableSync": false
     },
     "NativeAppSettings": {
         "AppDownloadLink": "https://about.mattermost.com/downloads/",
