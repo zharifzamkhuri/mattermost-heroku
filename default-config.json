@@ -52,7 +52,12 @@
         "TeammateNameDisplay": "username",
         "EnableAPIv3": "true",
         "EnableXToLeaveChannelsFromLHS": false,
-        "AllowedUntrustedInternalConnections": ""
+        "AllowedUntrustedInternalConnections": "",
+        "SessionIdleTimeoutInMinutes": 0,
+        "CloseUnusedDirectMessages": false,
+        "EnablePreviewFeatures": true,
+        "CloseUnusedDirectMessages": false,
+        "ExperimentalEnableAuthenticationTransfer": true
     },
     "TeamSettings": {
         "SiteName": "Mattermost",
@@ -76,7 +81,8 @@
         "UserStatusAwayTimeout": 300,
         "MaxChannelsPerTeam": 2000,
         "MaxNotificationsPerChannel": 1000,
-        "ExperimentalTownSquareIsReadOnly": false
+        "ExperimentalTownSquareIsReadOnly": false,
+        "EnableConfirmNotificationsToChannel": true
     },
     "SqlSettings": {
         "DriverName": "mysql",
@@ -144,7 +150,8 @@
         "EnableEmailBatching": false,
         "EmailBatchingBufferSize": 256,
         "EmailBatchingInterval": 30,
-        "SkipServerCertificateVerification": false
+        "SkipServerCertificateVerification": false,
+        "UseChannelInEmailNotifications": false
     },
     "RateLimitSettings": {
         "Enable": false,
@@ -213,7 +220,8 @@
         "SkipCertificateVerification": false,
         "QueryTimeout": 60,
         "MaxPageSize": 0,
-        "LoginFieldName": ""
+        "LoginFieldName": "",
+        "EnableSyncWithLdap": false
     },
     "ComplianceSettings": {
         "Enable": false,
@@ -242,7 +250,8 @@
         "NicknameAttribute": "",
         "LocaleAttribute": "",
         "PositionAttribute": "",
-        "LoginButtonText": "With SAML"
+        "LoginButtonText": "With SAML",
+        "EnableSync: false"
     },
     "NativeAppSettings": {
         "AppDownloadLink": "https://about.mattermost.com/downloads/",
@@ -301,7 +310,10 @@
         "PostIndexShards": 1,
         "AggregatePostsAfterDays": 365,
         "PostsAggregatorJobStartTime": "03:00",
-        "IndexPrefix": ""
+        "IndexPrefix": "",
+        "LiveIndexingBatchSize": 1,
+        "RequestTimeoutSeconds": 30,
+        "BulkIndexingTimeWindowSeconds": 3600
     },
     "DataRetentionSettings": {
         "EnableMessageDeletion": false,
@@ -316,6 +328,17 @@
     },
     "PluginSettings": {
         "Enable": false,
-        "Plugins": {}
+        "Plugins": {},
+        "EnableUploads": false,
+        "Directory": "./plugins",
+        "PluginStates": {},
+        "ClientDirectory": "./client/plugins"
+    },
+    "MessageExportSettings": {
+        "EnableExport": false,
+        "DailyRunTime": "01:00",
+        "ExportFromTimestamp": 0,
+        "FileLocation": "export",
+        "BatchSize": 10000
     }
 }
