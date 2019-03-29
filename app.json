@@ -13,12 +13,12 @@
             "url": "https://github.com/zharifzamkhuri/nginx-buildpack"
         },
         {
-            "url": "http://github.com/mozilla/mattermost-heroku.git#v2.3.0"
+            "url": "http://github.com/mozilla/mattermost-heroku.git"
         }
     ],
     "env": {
         "MATTERMOST_VERSION": {
-            "value": "4.2.0",
+            "value": "4.5.0",
             "description": "Mattermost version to install, semver format"
         },
         "MATTERMOST_TYPE": {
