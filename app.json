@@ -10,7 +10,7 @@
     "buildpacks": [
 
         {
-            "url": "https://github.com/cadecairos/nginx-buildpack"
+            "url": "https://github.com/zharifzamkhuri/nginx-buildpack"
         },
         {
             "url": "http://github.com/mozilla/mattermost-heroku.git#v2.2.0"
