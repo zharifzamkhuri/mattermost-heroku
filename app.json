@@ -13,7 +13,7 @@
             "url": "https://github.com/zharifzamkhuri/nginx-buildpack"
         },
         {
-            "url": "http://github.com/mozilla/mattermost-heroku.git#v2.2.0"
+            "url": "http://github.com/mozilla/mattermost-heroku.git#v2.3.0"
         }
     ],
     "env": {
